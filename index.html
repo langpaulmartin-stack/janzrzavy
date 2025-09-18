@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Jan Zrzavý – Malíř básník</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Stránky spolku za záchranu rodného domu Jana Zrzavého.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Header (jediný, společný pro desktop + mobil) -->
+<header class="header">
+    <div class="container nav">
+      <div class="nav__brand">
+        <a href="./" class="nav__logo">
+          <img src="https://raw.githubusercontent.com/langpaulmartin-stack/janzrzavy/main/Logo Spolku Za Záchranu Rodného Domu.png" 
+               alt="Logo Jan Zrzavý">
+        </a>
+        <a href="./" class="nav__orgname">Spolek Za záchranu rodného domu Jana Zrzavého</a>
+      </div>
+  
+      <!-- Desktop odkazy -->
+<!-- Desktop odkazy -->
+<nav class="nav__links" aria-label="Hlavní navigace">
+  <!-- Dropdown Jan Zrzavý -->
+  <div class="menu-item has-dropdown">
+    <button class="menu-trigger" aria-haspopup="true" aria-expanded="false">
+      Jan Zrzavý
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+      </svg>
+    </button>
+    <div class="dropdown">
+      <a href="#o-janovi">Profil</a>
+      <a href="#vzpominky">Vzpomínky</a>
+    </div>
+  </div>
+
+  <!-- Dropdown Místa -->
+  <div class="menu-item has-dropdown">
+    <button class="menu-trigger" aria-haspopup="true" aria-expanded="false">
+      Místa
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+      </svg>
+    </button>
+    <div class="dropdown">
+      <a href="#okrouhlice">Okrouhlice</a>
+      <a href="krucemburk.html">Krucemburk</a>
+      <a href="camaret.html">Camaret sur Mer</a>
+      <!-- přidej další místa -->
+    </div>
+  </div>
+
+  <a href="#aktuality">Aktuality</a>
+  <a href="#cile">Cíle spolku</a>
+  <a href="#aktivity">Aktivity</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
+
+  
+      <!-- Hamburger (mobil) -->
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Otevřít menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
+        </svg>
+      </button>
+    </div>
+  
+    <!-- Vysouvací panel (mobil) -->
+    <nav class="nav__panel" id="mobileMenu" aria-label="Mobilní navigace" hidden>
+      <!-- Jan Zrzavý (skupina v mobilu) -->
+      <details class="mobile-group">
+        <summary>Jan Zrzavý</summary>
+        <a href="#o-janovi">Profil</a>
+        <a href="#vzpominky">Vzpomínky</a>
+      </details>
+    
+      <!-- Místa (skupina v mobilu) -->
+      <details class="mobile-group">
+        <summary>Místa</summary>
+        <a href="/okrouhlice.html">Okrouhlice</a>
+        <a href="/krucemburk.html">Krucemburk</a>
+        <a href="/camaret-sur-mer.html">Camaret-sur-Mer</a>
+        <a href="/mista.html">Další…</a>
+      </details>
+    
+      <a href="#aktuality">Aktuality</a>
+      <a href="#cile">Cíle spolku</a>
+      <a href="#aktivity">Aktivity</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    
+  </header>
+  
+
+  <!-- Hero slider -->
+  <section class="hero hero--slider" aria-label="Hero slider">
+    <div class="slider" id="heroSlider">
+      <div class="slides">
+        <!-- Slide 1 -->
+        <article class="slide" data-index="0">
+          <div class="slide__media">
+            <img src="https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_2050_slider (1).jpg" alt="Ilustrační fotografie 1">
+          </div>
+          <div class="slide__overlay"></div>
+          <div class="slide__content">
+            <div class="slide__inner">
+              <div class="slide__kicker">Spolek • Jan Zrzavý</div>
+              <h1 class="slide__title">Jan Zrzavý – Malíř básník</h1>
+              <p class="slide__lead">Stránky věnované životu a dílu Jana Zrzavého a aktivitám spolku v Okrouhlici.</p>
+              <div class="mt-3">
+                <a class="btn" href="#aktuality">Zobrazit aktuality</a>
+                <a class="btn" href="#cile">Cíle spolku</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 2 -->
+        <article class="slide" data-index="1">
+          <div class="slide__media">
+            <img src="https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/P1080807_slider_top.jpg" alt="Ilustrační fotografie 2">
+          </div>
+          <div class="slide__overlay"></div>
+          <div class="slide__content">
+            <div class="slide__inner">
+              <div class="slide__kicker">Okrouhlice</div>
+              <h2 class="slide__title">Rodný kraj a jeho příběhy</h2>
+              <p class="slide__lead">Poznejte místo, které formovalo osobnost a tvorbu Jana Zrzavého.</p>
+              <div class="mt-3">
+                <a class="btn" href="#okrouhlice">Více o Okrouhlici</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 3 -->
+        <article class="slide" data-index="2">
+          <div class="slide__media">
+            <img src="https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_6467_web.jpg" alt="Ilustrační fotografie 3">
+          </div>
+          <div class="slide__overlay"></div>
+          <div class="slide__content">
+            <div class="slide__inner">
+              <div class="slide__kicker">Aktivity spolku</div>
+              <h2 class="slide__title">Výstavy, publikace, partnerství</h2>
+              <p class="slide__lead">Podporujeme kulturu regionu a pečujeme o odkaz Jana Zrzavého.</p>
+              <div class="mt-3">
+                <a class="btn" href="#aktivity">Co děláme</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Controls -->
+      <div class="slider__nav" aria-hidden="false">
+        <button class="slider__btn" data-action="prev" aria-label="Předchozí snímek">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <button class="slider__btn" data-action="next" aria-label="Další snímek">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+        </button>
+      </div>
+
+      <!-- Dots -->
+      <div class="slider__dots" role="tablist" aria-label="Navigace snímků">
+        <button class="slider__dot" role="tab" aria-selected="true" aria-current="true" aria-controls="slide-1"></button>
+        <button class="slider__dot" role="tab" aria-selected="false" aria-controls="slide-2"></button>
+        <button class="slider__dot" role="tab" aria-selected="false" aria-controls="slide-3"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- O Janovi -->
+  <section id="o-janovi" class="section">
+    <div class="container">
+      <div class="kicker">Život & dílo</div>
+      <h2>Jan Zrzavý</h2>
+      <p class="mt-2">
+        Základní představení osobnosti, odkaz na životopis a chronologii („v datech“).
+      </p>
+      <div class="mt-3">
+        <a class="btn btn--ghost" href="#">Životopis</a>
+        <a class="btn btn--ghost" href="#">Jan Zrzavý v datech</a>
+        <a class="btn btn--ghost" href="#">Myšlenky</a>
+      </div>
+    </div>
+  </section>
+
+<!-- Okrouhlice (image section) -->
+<section id="okrouhlice" class="section section--image" 
+  style="--bg-url: url('https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_6467_web.jpg');">
+  <div class="container">
+    <div class="kicker">Místo</div>
+    <h2>Okrouhlice</h2>
+    <p class="mt-2">
+      Krátké představení obce na Českomoravské vrchovině a její souvislosti s Janem Zrzavým.
+    </p>
+    <a class="btn mt-3" href="#">Základní informace</a>
+  </div>
+</section>
+
+
+
+  <!-- Aktuality -->
+<section id="aktuality" class="section">
+  <div class="container">
+    <div class="kicker">Co je nového</div>
+    <h2>Aktuality ze spolku</h2>
+    <div class="list mt-3">
+      <div class="list__item">
+        <strong>Aktualita / výstava</strong><br>
+        Krátký perex k nové události nebo článku. 
+        <a class="btn btn--ghost mt-2" href="#">Číst více</a>
+      </div>
+      <div class="list__item">
+        <strong>Publikace</strong><br>
+        Novinky z vydavatelské činnosti a spoluprací. 
+        <a class="btn btn--ghost mt-2" href="#">Číst více</a>
+      </div>
+      <div class="list__item">
+        <strong>Spolupráce & partneři</strong><br>
+        Informace o probíhajících partnerstvích. 
+        <a class="btn btn--ghost mt-2" href="#">Číst více</a>
+      </div>
+    </div>
+    <a class="btn btn--outline mt-3" href="#">Seznam všech článků</a>
+  </div>
+</section>
+
+
+  <!-- Cíle spolku -->
+  <section id="cile" class="section section--soft">
+    <div class="container">
+      <div class="kicker">Poslání</div>
+      <h2>Cíle spolku</h2>
+      <p class="mt-2">
+        Vytvoření Centra Jana Zrzavého v budově bývalé školy a rozvoj kulturních a společenských aktivit regionu.
+      </p>
+      <a class="btn mt-3" href="#">Vše o spolku</a>
+    </div>
+  </section>
+
+  <!-- Aktivity -->
+  <section id="aktivity" class="section">
+    <div class="container">
+      <div class="kicker">Co děláme</div>
+      <h2>Aktivity spolku</h2>
+
+      <div class="grid grid--3 mt-3">
+        <article class="card">
+          <h3>Rozvoj komunity a péče o rodný dům</h3>
+          <p class="mt-2">Kulturní akce, vzdělávání a podpora identity regionu.</p>
+          <p class="mt-2"><a href="#">Více</a></p>
+        </article>
+
+        <article class="card">
+          <h3>Vydavatelská činnost</h3>
+          <p class="mt-2">Publikace věnované Zrzavému, regionu a historii.</p>
+          <ul class="mt-2">
+            <li>Lipnická bible – štít víry…</li>
+            <li>Stížný list proti upálení Jana Husa</li>
+            <li>Chvilky s Janem Zrzavým</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Partnerství s institucemi</h3>
+          <p class="mt-2">Spolupráce s muzei, galeriemi a dalšími organizacemi.</p>
+          <p class="mt-2"><a href="#">Partnerské instituce</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vzpomínky -->
+  <section id="vzpominky" class="section section--image" 
+  style="--bg-url: url('https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_6468_web.jpg');">
+  <div class="container">
+    <div class="kicker">Myšlenky</div>
+    <h2>Vzpomínky Jana Zrzavého</h2>
+    <p class="mt-2">
+      Výběr vzpomínek a myšlenek – citace a vyprávění.
+    </p>
+    <a class="btn mt-3" href="#">Číst vzpomínky</a>
+  </div>
+</section>
+
+
+
+  <!-- Footer -->
+  <footer id="kontakt" class="footer">
+    <div class="container footer__cols">
+      <div>
+        <strong>Za záchranu rodného domu Jana Zrzavého, z.s.</strong><br>
+        582 31 Okrouhlice 62<br>
+        IČ: 22725181
+      </div>
+      <div>
+        <div><strong>Účet spolku</strong></div>
+        <div>Č.ú.: 3807356001/5500</div>
+        <div>IBAN: CZ8355000000003807356001</div>
+        <div>SWIFT: RZBCCZPP</div>
+      </div>
+      <div>
+        <div><strong>Odkazy</strong></div>
+
+        <div class="mt-2">© <span id="year"></span> Martin Langpaul</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slider JS -->
+  <script>
+    (function(){
+      const root = document.getElementById('heroSlider');
+      if(!root) return;
+    
+      const track = root.querySelector('.slides');
+      const originals = Array.from(root.querySelectorAll('.slide'));
+      const btnPrev = root.querySelector('[data-action="prev"]');
+      const btnNext = root.querySelector('[data-action="next"]');
+      const dots = Array.from(root.querySelectorAll('.slider__dot'));
+    
+      const len = originals.length;
+      const DURATION = 5000;
+    
+      // --- Nekonečná smyčka: přidáme klony ---
+      const firstClone = originals[0].cloneNode(true);
+      const lastClone  = originals[len-1].cloneNode(true);
+      firstClone.classList.add('clone');
+      lastClone.classList.add('clone');
+      track.appendChild(firstClone);              // ... [1,2,3] + [1]
+      track.insertBefore(lastClone, originals[0]); // [3] + [1,2,3] + [1]
+    
+      let slidesAll = Array.from(track.children);
+    
+      // Start na PRVNÍM reálném slide (index 1 včetně klonu na začátku)
+      let i = 1;
+      let timer = null;
+      let playing = true;
+    
+      function setTransition(on){
+        track.style.transition = on ? 'transform .6s ease' : 'none';
+      }
+    
+      function updateDots(){
+        const realIndex = (i - 1 + len) % len; // mapujeme [1..len] -> [0..len-1]
+        dots.forEach((d, idx)=>{
+          const active = idx === realIndex;
+          d.setAttribute('aria-selected', active ? 'true' : 'false');
+          d.toggleAttribute('aria-current', active);
+        });
+      }
+    
+      function goTo(index, withAnim = true){
+        setTransition(withAnim);
+        i = index;
+        track.style.transform = `translateX(-${i * 100}%)`;
+        updateDots();
+      }
+    
+      function next(){
+        goTo(i + 1, true);
+      }
+      function prev(){
+        goTo(i - 1, true);
+      }
+    
+      // Po každém „dofrčení“ zkontrolujeme klony a skokem beze změny polohy vrátíme index
+      track.addEventListener('transitionend', ()=>{
+        const current = slidesAll[i];
+        if(!current) return;
+    
+        // Pokud jsme dojeli na klon prvního (na KONCI), okamžitě přepneme bez animace na reálný první
+        if(current.classList.contains('clone') && current === firstClone){
+          goTo(1, false); // stejné vizuální místo, jen opravíme index
+        }
+        // Pokud jsme sjeli dozadu na klon posledního (na ZAČÁTKU), přepneme bez animace na reálný poslední
+        if(current.classList.contains('clone') && current === lastClone){
+          goTo(len, false);
+        }
+      });
+    
+      function play(){
+        if(timer) clearInterval(timer);
+        timer = setInterval(next, DURATION); // vždy posouváme VLEVO (index roste)
+        playing = true;
+      }
+      function pause(){
+        if(timer) clearInterval(timer);
+        timer = false;
+        playing = false;
+      }
+    
+      // Init
+      // nastavení počáteční pozice (bez animace), pak spustíme
+      goTo(1, false);
+      play();
+    
+      // Ovládání
+      btnNext?.addEventListener('click', ()=>{ next(); if(playing) play(); });
+      btnPrev?.addEventListener('click', ()=>{ prev(); if(playing) play(); });
+    
+      dots.forEach((d, idx)=> d.addEventListener('click', ()=>{
+        // idx je reálný index [0..len-1], my potřebujeme posunout na [1..len]
+        goTo(idx + 1, true);
+        if(playing) play();
+      }));
+    
+      // Hover/focus -> pauza
+      root.addEventListener('mouseenter', pause);
+      root.addEventListener('mouseleave', play);
+      root.addEventListener('focusin', pause);
+      root.addEventListener('focusout', play);
+    
+      // Klávesnice
+      root.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowRight'){ e.preventDefault(); next(); }
+        if(e.key === 'ArrowLeft'){  e.preventDefault(); prev(); }
+      });
+      root.tabIndex = 0;
+    
+      // Swipe
+      let sx = 0, dx = 0;
+      const onStart = e => { sx = (e.touches ? e.touches[0].clientX : e.clientX); dx = 0; pause(); };
+      const onMove  = e => { const x = (e.touches ? e.touches[0].clientX : e.clientX); dx = x - sx; };
+      const onEnd   = () => { if(Math.abs(dx) > 40){ dx < 0 ? next() : prev(); } play(); };
+    
+      track.addEventListener('touchstart', onStart, {passive:true});
+      track.addEventListener('touchmove',  onMove,  {passive:true});
+      track.addEventListener('touchend',   onEnd,   {passive:true});
+    
+      // Reduced motion
+      const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if(mq.matches){ pause(); }
+      mq.addEventListener?.('change', e => e.matches ? pause() : play());
+    })();
+    </script>
+    
+
+  <!-- Mobile nav JS -->
+  <script>
+  (function(){
+    const btn = document.getElementById('navToggle');
+    const panel = document.getElementById('mobileMenu');
+    if(!btn || !panel) return;
+
+    function openMenu(){
+      panel.hidden = false;
+      panel.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+      btn.setAttribute('aria-label','Zavřít menu');
+    }
+    function closeMenu(){
+      panel.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      btn.setAttribute('aria-label','Otevřít menu');
+      panel.hidden = true;
+    }
+    function toggleMenu(){
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      open ? closeMenu() : openMenu();
+    }
+
+    btn.addEventListener('click', toggleMenu);
+    panel.addEventListener('click', (e)=>{ if(e.target.tagName === 'A'){ closeMenu(); } });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ closeMenu(); } });
+    window.addEventListener('resize', ()=>{ if(window.innerWidth > 900) closeMenu(); });
+  })();
+  </script>
+<script>
+(function(){
+  // Desktop dropdown toggle (+ zavření při kliknutí mimo)
+  const dd = document.querySelector('.has-dropdown');
+  if(!dd) return;
+  const btn = dd.querySelector('.menu-trigger');
+  const menu = dd.querySelector('.dropdown');
+
+  function open(){ dd.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  function close(){ dd.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+  function toggle(){ dd.classList.contains('open') ? close() : open(); }
+
+  // Otevřít/zavřít na klik
+  btn.addEventListener('click', (e)=>{ e.preventDefault(); toggle(); });
+
+  // Klik mimo zavře
+  document.addEventListener('click', (e)=>{
+    if(!dd.contains(e.target)) close();
+  });
+
+  // Klávesnice: Esc = zavřít, ↓/↑ = fokus položky
+  dd.addEventListener('keydown', (e)=>{
+    const items = Array.from(menu.querySelectorAll('a'));
+    const idx = items.indexOf(document.activeElement);
+    if(e.key === 'Escape'){ close(); btn.focus(); }
+    if(e.key === 'ArrowDown'){
+      e.preventDefault();
+      open();
+      (items[idx+1] || items[0]).focus();
+    }
+    if(e.key === 'ArrowUp'){
+      e.preventDefault();
+      open();
+      (items[idx-1] || items[items.length-1]).focus();
+    }
+  });
+})();
+</script>
+<script>
+  // vloží aktuální rok do #year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
