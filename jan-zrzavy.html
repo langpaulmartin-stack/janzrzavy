@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Jan Zrzavý – profil, v datech a myšlenky</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Profil Jana Zrzavého: stručný životopis, Jan Zrzavý v datech a myšlenky z knihy vzpomínek.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Header (stejný jako na homepage) -->
+<header class="header">
+  <div class="container nav">
+    <div class="nav__brand">
+      <a href="./" class="nav__logo">
+        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/janzrzavy/main/Logo Spolku Za Záchranu Rodného Domu.png" 
+             alt="Logo Jan Zrzavý">
+      </a>
+      <a href="./" class="nav__orgname">Spolek Za záchranu rodného domu Jana Zrzavého</a>
+    </div>
+
+    <nav class="nav__links" aria-label="Hlavní navigace">
+      <div class="menu-item has-dropdown">
+        <button class="menu-trigger" aria-haspopup="true" aria-expanded="false">
+          Jan Zrzavý
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+          </svg>
+        </button>
+        <div class="dropdown">
+          <a href="#v-datech">V datech</a>
+          <a href="#myslenky">Myšlenky</a>
+        </div>
+      </div>
+      <div class="menu-item has-dropdown">
+        <button class="menu-trigger" aria-haspopup="true" aria-expanded="false">
+          Místa
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+          </svg>
+        </button>
+        <div class="dropdown">
+          <a href="okrouhlice.html">Okrouhlice</a>
+          <a href="krucemburk.html">Krucemburk</a>
+          <a href="camaret.html">Camaret sur Mer</a>
+        </div>
+      </div>
+      <a href="index.html#aktuality">Aktuality</a>
+      <a href="o-spolku.html#o-spolku">Cíle spolku</a>
+      <a href="index.html#aktivity">Aktivity</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Otevřít menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
+      </svg>
+    </button>
+  </div>
+
+  <nav class="nav__panel" id="mobileMenu" aria-label="Mobilní navigace" hidden>
+    <details class="mobile-group">
+      <summary>Jan Zrzavý</summary>
+      <a href="#v-datech">V datech</a>
+      <a href="#myslenky">Myšlenky</a>
+    </details>
+
+    <details class="mobile-group">
+      <summary>Místa</summary>
+      <a href="/okrouhlice.html">Okrouhlice</a>
+      <a href="/krucemburk.html">Krucemburk</a>
+      <a href="/camaret-sur-mer.html">Camaret-sur-Mer</a>
+      <a href="/mista.html">Další…</a>
+    </details>
+
+    <a href="index.html#aktuality">Aktuality</a>
+    <a href="o-spolku.html#o-spolku">Cíle spolku</a>
+    <a href="index.html#aktivity">Aktivity</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<main id="main">
+  <!-- Hero (lehčí, bez slideru) -->
+  <section class="section section--image" style="--bg-url: url('https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/P1080807_slider_top.jpg');">
+    <div class="container">
+      <div class="kicker">Život & dílo</div>
+      <h1>Jan Zrzavý</h1>
+      <p class="mt-2 max-w-60ch">Stručný profil s časovou osou a výběrem vzpomínek.</p>
+      <div class="mt-3">
+        <a class="btn" href="#v-datech">V datech</a>
+        <a class="btn btn--ghost" href="#myslenky">Myšlenky</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sub-nav uvnitř stránky -->
+  <nav class="subnav" aria-label="Obsah stránky">
+    <div class="container subnav__inner">
+      <a class="subnav__link" href="#v-datech">V datech</a>
+      <a class="subnav__link" href="#myslenky">Myšlenky</a>
+    </div>
+  </nav>
+
+  <!-- Jan Zrzavý v datech (kompaktní, čitelná sazba) -->
+  <section id="v-datech" class="section">
+    <div class="container">
+      <div class="kicker">Chronologie</div>
+      <h2>Jan Zrzavý v datech</h2>
+
+      <!-- Tip: každý blok je rok/období. Dlouhé odstavce jsem členil na body kvůli čitelnosti. -->
+      <div class="mt-3 grid grid--2 gap-lg">
+        <article class="card">
+          <div class="card__body">
+            <h3 class="h5">5.&nbsp;11.&nbsp;1890 – Vadín / Okrouhlice</h3>
+            <p>*5.11.1890, Vadín – Okrouhlice</p>
+            <p>Otec Jan Zrzavý (Hanuš), řídící učitel, včelař a zahradník; matka Viléma, roz. Kaizlová, z měšťanské rodiny z Třeboně.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__body">
+            <h3 class="h5">Dětství a studia (do 1906)</h3>
+            <p>Učení Janovi nešlo – střídal školy: gymnázium v Havlíčkově Brodě, měšťanka v Kutné Hoře, v Přibyslavi, znovu v Havlíčkově Brodě, 1905 stavební průmyslovka v Brně. Vážně onemocněl; otec povolil studia malířství.</p>
+            <p>1906 Praha: soukromé školy (Karel Reisner, František Županský) a ateliér Františka Ženíška.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__body">
+            <h3 class="h5">1907 – první Paříž a návrat</h3>
+            <p>1.&nbsp;11.&nbsp;1907 útěk do Paříže „malovat podle svých představ“, po 10 dnech návrat. Paříž jej natrvalo okouzlila.</p>
+            <ul class="list">
+              <li>1907: Zátiší s jablky, Zátiší s česnekem, Kampa, Zátiší s třešněmi (vliv francouzské malby)</li>
+              <li>1907: Podobizna sochaře V. Krupičky (raně fauvisticko‑expresionistická malba)</li>
+              <li>1907: Sedící akt v zahradě; Perská zahrada, Krajina s cestou (plošný stylismus / Gauguin)</li>
+              <li>1907–1908: Údolí smutku (pastel → olej 1908); setkání s dílem Julia Zeyera</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+            <div class="card__body">
+              <h3 class="h5">1908–1911 – školy, vyloučení, hledání</h3>
+              <ul class="list">
+                <li>1908–09: vlastní podobizny; po školním roce 1908/09 vyloučen, studie ukončeny. Neúspěšné pokusy o přijetí na Akademii (4×).</li>
+                <li>1910: obrazy na brněnskou výstavu Sursum – cestou se ztratily.</li>
+                <li>1910–1911: nemaluje; na podnět Miloše Martena kreslí (vliv Leonardo). Krátce obchodní škola v Praze.</li>
+                <li>1911: setkání s Bohumilem Kubištou – zásadní impuls a vyjasnění cíle.</li>
+              </ul>
+            </div>
+          </article>
+          
+
+        <article class="card">
+          <div class="card__body">
+            <h3 class="h5">1911–1913 – první výstavy a Sursum</h3>
+            <ul class="list">
+              <li>1911: <em>Andělská návštěva</em> (pastel).</li>
+              <li>1912: <em>Spící hoch</em>, <em>Melancholie I</em>; podzim – první vystavení v Obecním domě (Sursum).</li>
+              <li>1912: <em>Kázání na hoře</em>; <em>Kleopatra I</em> – kresba uhlem (olej 1940).</li>
+              <li>1913: přijat do spolku Mánes (díky <em>Spícímu hochovi</em>), 1917 vystupuje.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__body">
+            <h3 class="h5">1913–1918 – válka a Praha</h3>
+            <ul class="list">
+              <li>1913: kubizující experimenty (<em>Podobizna Adolfa Gaertnera</em>, <em>Zátiší s konvalinkami</em>, <em>Kristus dobrý pastýř</em> aj.).</li>
+              <li>1914: válka; podnájem na Novém Světě (Černínská ulice). Korespondence s Kubištou.</li>
+              <li>1915: <em>Snoubenci</em> (pastel), setkání s Kubištou.</li>
+              <li>1916: <em>Utrpení</em>.</li>
+              <li>1917: civilní zaměstnání; vystavuje se skupinou Tvrdošíjných (jaro 1918).</li>
+              <li>1918: onemocnění tyfem; seznámení se Zdenkou Braunerovou; září – samostatná výstava u Topičů (úspěch).</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__body">
+            <h3 class="h5">1919–1925 – Kleopatra a cesty</h3>
+            <ul class="list">
+              <li>1919: <em>Kleopatra II</em> – kresba uhlem; později oleje dle kresby (1942–57).</li>
+              <li>1923: samostatná výstava u Topičů; publikuje teoretické a literární texty.</li>
+              <li>1923: <em>Kleopatra II</em> – olej; <em>Kavárna</em> (koncepty 1913–14, 1917); <em>Žebračka</em>.</li>
+              <li>1923: vstup do Umělecké besedy. Cestování: Bretaň, Paříž (malý domek). Krajiny s českými motivy (např. Krucemburk 1923).</li>
+              <li>1924: ilustrace Máchova <em>Máje</em>.</li>
+              <li>1925: pobyt v Bretani (Camaret, Kermel, La Fret, Locronan). Motivy 1926–27.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__body">
+            <h3 class="h5">1928–1934 – Benátky, Bréhat a Praha</h3>
+            <ul class="list">
+              <li>1928: ilustrace Erbenovy <em>Kytice</em>; první benátské obrazy.</li>
+              <li>1929: <em>Veles</em> (ojedinělý figurální obraz).</li>
+              <li>1930: Bretaň – Île de Sein; každoroční výstavy v Alšově síni (Umělecká beseda).</li>
+              <li>1931: série <em>Kázání I–III</em>, <em>Vznášející se anděl</em>, <em>Večer na Île de Sein</em>.</li>
+              <li>1932: <em>Studny na Île de Bréhat</em>, <em>Spící lodi</em> aj.</li>
+              <li>1933: průmyslové motivy (Ostravice, haldy, strusky).</li>
+              <li>1934: <em>Loretánské náměstí</em>; 1934–38 Locronan.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__body">
+            <h3 class="h5">1939–1947 – válka, retrospektivy, profesura</h3>
+            <ul class="list">
+              <li>1939–42: návraty k českým motivům (Krucemburk, Kaplička v Babicích aj.).</li>
+              <li>1940: souborná výstava (Umělecká beseda, Obecní dům); <em>Kleopatra I</em> (olej dle kresby 1912).</li>
+              <li>1941: monografický sborník Umělecké besedy.</li>
+              <li>1942: Vodňany; <em>Poutníci do Emauz</em>, <em>Zvěstování</em>; oleje <em>Kleopatra II</em> (plátno 1946, deska 1957 se zlaceným podkladem).</li>
+              <li>1947: profesor malby na UP v Olomouci (krátce).</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__body">
+            <h3 class="h5">1950–1966 – výstavy, publikace, ocenění</h3>
+            <ul class="list">
+              <li>50. léta: obrazy málo vystavovány, ilustruje knihy.</li>
+              <li>1955: odchod z Vodňan; útočiště v Okrouhlici.</li>
+              <li>1956: výstavy <em>Domov v hudbě Bohuslava Martinů</em> a <em>Ilustrace</em> (Galerie ČFVU, úvod V. Nezval).</li>
+              <li>1957: výstava <em>Obrazy a kresby</em> (Galerie Československý spisovatel).</li>
+              <li>1958: monografie Dalibora Plichty <em>Jan Zrzavý – moderní symbolista</em> (Artia).</li>
+              <li>1960: výstava 21 obrazů v Divadle Na zábradlí.</li>
+              <li>1963: souborná výstava NG v Mánesu (Brno, Bratislava; následné putování po ČSR); publikace <em>Svět Jana Zrzavého</em>.</li>
+              <li>1966: jmenován národním umělcem; cesty (Benátky, Řecko); preferuje pastel, akvarel, temperu.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__body">
+            <h3 class="h5">1977 – závěr života</h3>
+            <p>Zemřel 12. října 1977 v Praze.</p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+ <!-- Myšlenky / vzpomínky – čistý text -->
+<section id="myslenky" class="section section--soft">
+    <div class="container">
+    <div class="kicker">Myšlenky</div>
+    <h2>Jan Zrzavý vzpomíná na domov</h2>
+    
+    
+    <p>Můj otec – po svém otci Jan, říkával si však Hanuš – se na narodil v Krucemburku u Chotěboře. A dodnes tam žije snad dvanáct rodin Zrzavých, už snad dvěstě nebo třista let tam žijí – a z těch my pocházíme taky. Většinou to byli sedláci, tatínkův otec byl hospodským a sedlákem, na kraji městečka měl zájezdní hospodu Na špici………. </p>
+    <p>Tatínka, prvorozeného syna, dal dědeček na studia. Byl v Praze na reálce, potom šel na techniku.</p>
+    <p>Ale brzy byl se studováním konec. V Krucemburku založili lihovar, došlo ke krachu a dědeček v tom podnikání přišel skoro o všechny peníze. Po dvou letech na technice si tatínek udělal nějaký kurs a začal učitelovat na Vysočině. Jeho první místo bylo na Lipnici, odtud se seznámil s maminkou, která žila tenkrát v Humpolci.</p>
+    <p>Tatínek, aby se mohl oženit, chtěl být asi víc než jenom učitelem. A tak se stal řídícím – na maličké škole, na jednotřídce v Čejově u Humpolce. Tam rodiče zůstali dva roky, tam se narodil můj nejstarší bratr. A všichni ostatní jsme se už narodili v Okrouhlici. V okrouhlické škole, která byla tehdy nová a kde se stal tatínek prvním řídícím.</p>
+    <p>Ještě nedávno byla v okrouhlické škole třída se starou podlahou, vedly v ní cestičky do dřeva vyšlapané, cestičky z pokoje do pokoje – byla to podlaha našeho bývalého bytu. My všichni jsme to staré dřevo vyšlapali: maminka, otec, nás devět dětí. Měl jsem ten byt a hlavně velký obývací pokoj strašně rád.</p>
+    <p>Jak už jsem řekl, osm se nás narodilo v okrouhlické škole. A přece vlastně nevíme, kdo jsme se kde narodili. Někteří máme na křestním listě „narozen v Okrouhlici“, někteří „narozen ve Vadíně“. Já mám na křestním listě Vadín. Jak je to možné? Okolo vesnice teče Sázava, přes Sázavu je most a za mostem, kde stála škola, byly už vadínské pozemky. Ty dvě vesnice se o školu soudily, někdy vyhráli Okrouhličtí a škola byla v Okrouhlici, jindy Vadínští a škola byla ve Vadíně. Podle toho, kdy se kdo z nás narodil, patřili jsme do Vadína nebo do Okrouhlice. Školu a pozemky kolem ní pak definitivně připojili k Okrouhlici. Abych ten zmatek vyřešil, píšu, že jsem se narodil „ve Vadíně – Okrouhlici“. Stalo se to 5.listopadu 1890, byl jsem šesté dítě svých rodičů. ………..</p>
+    <p>Bylo nás sedm chlapců a dvě děvčata. Ale dva z nás umřeli mladí. ….. Starší bratry jsem skoro neznal. Když jsem se narodil, byli už ve světě, studovali, vídal jsem je jen o prázdninách a svátcích.</p>
+    <p>Náš rodinný pokoj, který jsem měl tak rád, si dodnes pamatuju do každého detailu, kde co stálo a jaké to bylo. Na okna, vysoká a s okenicemi, jsme lepili panáčky a panenky vystříhané ze starých novin, když se vystřihovánka roztáhla, bylo jich třeba deset vedle sebe. Nebo jsme si sami namalovali obrázky, vystříhali a nalepili. Nad stolem visela velká petrolejová lampa, to bylo sváteční osvětlení, rozsvěcovala se jenom na Štědrý den. Nábytek byl většinou z maminčina příbuzenstva, pár kousků pořád mám. Na prádelníku stály černé vídeňské hodiny, vykládané perletí, biedermeier. Každý večer, už v noční košili, je tatínek natahoval. Když je dnes natahuju , vždycky si na tatínka vzpomenu a vidím ho. Byl tam velký žlutý kredenc, kde jsme my děti měly hračky a poklady. V tom pokoji jsme my nejmladší s rodiči spávali. Stála tam tatínkova a matčina postel, kolmo k té maminčině byla přistavena dětská postýlka se sítí. Nejmladší spal v postýlce, druhý v šupleti, které se zpod postýlky vytáhlo, a třetí postoupil na kanape u okna. Tam v zimě pořádně táhlo. ………………..</p>
+    <p>Škola, dost veliká budova, stála skoro o samotě, poblíž byla jen hospoda a sirobárna; když se neučilo, bylo v domě pusto. Chodby byly večer temné, tajemné. Tatínek mě občas poslal nahoru do kabinetu pro pero nebo pro jinou maličkost, kterou tam zapomněl. A to byly hrozné okamžiky v mém životě! U třetí třídy visela na zdi velká kresba lidské kostry, pro mě kostlivec, smrt. V noci se mi zdávalo, že ta smrt za mnou běží a já mám nohy jako přilepené, nemůžu zahnout kolem rohu, smrt mě už už chytá, a to jsem se vždycky s hrůzou vzbudil. U schodů do prvního patra jsem vídával večer ve tmě ohromnou ohnivou hlavu, rozšklebenou, koulela velikánskýma očima. Někdy bývala červená jako oheň, jindy zelená. Byla to asi vzpomínka na průvod komediantů, který jsem viděl ve vsi. Jeden z komediantů měl nastrčenou podobnou hlavu z papírmašé, a to mě tenkrát tak vyděsilo, že jsem málem skočil do řeky, neměl jsem honem kam utéct.</p>
+    <p>Ale v našem velkém pokoji pokoji, tam bylo blaho.. Tam jsem snil, vymýšlel si svůj svět, znal jsem každý kus nábytku a rozmlouval s těmi věcmi jako s živými. Pohádka. Bezpečí. Vidím ty cestičky do dřeva vyšlapané ……</p>
+    <p>Když mi bylo asi třináct nebo čtrnáct let, postavili nám vedle školy domek, z našeho bytu udělali další třídu. V tom domku se mně hrozně nelíbilo, to nebylo už vůbec nic. To byl konec, konec domova.</p>
+    <p class="muted mt-2">Úryvky z knihy <em>Jan Zrzavý vzpomíná na domov, dětství a mladá léta</em>, Praha, Svoboda 1971.</p>
+    </div>
+    </section>
+    </main>
+
+      
+<!-- Blok s tlačítky -->
+    <div class="section-cta">
+        <a class="btn btn--outline" href="index.html">← Zpět na homepage</a>
+        <a class="btn btn--outline" href="index.html#aktuality">Aktuality</a>
+        <a class="btn btn--outline" href="o-spolku.html#o-spolku">O spolku</a>
+      </div>
+      
+<!-- Footer (stejný) -->
+<footer id="kontakt" class="footer">
+  <div class="container footer__cols">
+    <div>
+      <strong>Za záchranu rodného domu Jana Zrzavého, z.s.</strong><br>
+      582 31 Okrouhlice 62<br>
+      IČ: 22725181
+    </div>
+    <div>
+      <div><strong>Účet spolku</strong></div>
+      <div>Č.ú.: 3807356001/5500</div>
+      <div>IBAN: CZ8355000000003807356001</div>
+      <div>SWIFT: RZBCCZPP</div>
+    </div>
+    <div>
+      <div><strong>Odkazy</strong></div>
+      <div class="mt-2">© <span id="year"></span> Martin Langpaul</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile nav JS (stejný jako na homepage) -->
+<script>
+(function(){
+  const btn = document.getElementById('navToggle');
+  const panel = document.getElementById('mobileMenu');
+  if(!btn || !panel) return;
+  function openMenu(){ panel.hidden = false; panel.classList.add('open'); btn.setAttribute('aria-expanded','true'); btn.setAttribute('aria-label','Zavřít menu'); }
+  function closeMenu(){ panel.classList.remove('open'); btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Otevřít menu'); panel.hidden = true; }
+  function toggleMenu(){ const open = btn.getAttribute('aria-expanded') === 'true'; open ? closeMenu() : openMenu(); }
+  btn.addEventListener('click', toggleMenu);
+  panel.addEventListener('click', (e)=>{ if(e.target.tagName === 'A'){ closeMenu(); } });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ closeMenu(); } });
+  window.addEventListener('resize', ()=>{ if(window.innerWidth > 900) closeMenu(); });
+})();
+</script>
+
+<script>
+  // Rok do patičky
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

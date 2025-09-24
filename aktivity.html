@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Aktivity spolku | Jan Zrzavý</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Přehled aktivit spolku Za záchranu rodného domu Jana Zrzavého.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="container nav">
+    <div class="nav__brand">
+      <a href="index.html" class="nav__logo">
+        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/janzrzavy/main/Logo Spolku Za Záchranu Rodného Domu.png" 
+             alt="Logo Jan Zrzavý">
+      </a>
+      <a href="index.html" class="nav__orgname">Spolek Za záchranu rodného domu Jana Zrzavého</a>
+    </div>
+
+    <nav class="nav__links" aria-label="Hlavní navigace">
+      <div class="menu-item has-dropdown">
+        <button class="menu-trigger" aria-haspopup="true" aria-expanded="false">
+          Jan Zrzavý
+          <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="dropdown">
+          <a href="jan-zrzavy.html#v-datech">V datech</a>
+          <a href="jan-zrzavy.html#myslenky">Myšlenky</a>
+        </div>
+      </div>
+      <div class="menu-item has-dropdown">
+        <button class="menu-trigger" aria-haspopup="true" aria-expanded="false">
+          Místa
+          <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="dropdown">
+          <a href="okrouhlice.html">Okrouhlice</a>
+          <a href="krucemburk.html">Krucemburk</a>
+          <a href="camaret.html">Camaret sur Mer</a>
+        </div>
+      </div>
+      <a href="index.html#aktuality">Aktuality</a>
+      <a href="o-spolku.html#o-spolku">Cíle spolku</a>
+      <a href="aktivity.html">Aktivity</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Otevřít menu">
+      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section class="section section--image" style="--bg-url: url('https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_6467_web.jpg');">
+    <div class="container">
+      <div class="kicker">Co děláme</div>
+      <h1>Aktivity spolku</h1>
+      <p class="mt-2">Podpora komunity, vydávání publikací a spolupráce s institucemi.</p>
+      <div class="mt-3">
+        <a class="btn" href="#rozvoj">Rozvoj komunity</a>
+        <a class="btn btn--ghost" href="#vydavatelska">Vydavatelská činnost</a>
+        <a class="btn btn--ghost" href="#partnerstvi">Partnerství</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Rozvoj -->
+  <section id="rozvoj" class="section">
+    <div class="container">
+      <div class="kicker">Aktivity</div>
+      <h2>Rozvoj komunity a péče o rodný dům</h2>
+      <p class="mt-2">Kulturní akce, vzdělávání a podpora identity regionu.</p>
+    </div>
+  </section>
+
+  <!-- Vydavatelská činnost -->
+  <section id="vydavatelska" class="section section--soft">
+    <div class="container">
+      <div class="kicker">Publikace</div>
+      <h2>Vydavatelská činnost</h2>
+      <p class="mt-2">Publikace věnované Zrzavému, regionu a historii.</p>
+  
+      <div class="grid grid--3 mt-3">
+        <article class="card card--year">
+          <figure class="card__media">
+            <img src="https://picsum.photos/400/250?random=11" alt="Stížný list">
+          </figure>
+          <div class="card__body">
+            <h3 class="h5">Stížný list</h3>
+            <div class="card__meta">Rok vydání: …</div>
+            <p>Oceňovaná publikace připomínající historické události spojené s obcí Okrouhlice.</p>
+          </div>
+        </article>
+  
+        <article class="card card--year">
+          <figure class="card__media">
+            <img src="https://picsum.photos/400/250?random=12" alt="Lipnická bible">
+          </figure>
+          <div class="card__body">
+            <h3 class="h5">Lipnická bible</h3>
+            <div class="card__meta">Rok vydání: …</div>
+            <p>Významné dílo propojující historii a kulturní odkaz regionu.</p>
+          </div>
+        </article>
+  
+        <article class="card card--year">
+          <figure class="card__media">
+            <img src="https://picsum.photos/400/250?random=13" alt="Jan Zrzavý – malíř básník">
+          </figure>
+          <div class="card__body">
+            <h3 class="h5">Jan Zrzavý – malíř básník</h3>
+            <div class="card__meta">Rok vydání: …</div>
+            <p>Publikace věnovaná osobnosti a dílu Jana Zrzavého.</p>
+          </div>
+        </article>
+  
+        <article class="card card--year">
+          <figure class="card__media">
+            <img src="https://picsum.photos/400/250?random=14" alt="Chvilky s Janem Zrzavým">
+          </figure>
+          <div class="card__body">
+            <h3 class="h5">Chvilky s Janem Zrzavým</h3>
+            <div class="card__meta">Rok vydání: …</div>
+            <p>Sbírka textů a vzpomínek na malíře básníka.</p>
+          </div>
+        </article>
+  
+        <article class="card card--year">
+          <figure class="card__media">
+            <img src="https://picsum.photos/400/250?random=15" alt="Spory o Jana Žižku">
+          </figure>
+          <div class="card__body">
+            <h3 class="h5">Spory o Jana Žižku</h3>
+            <div class="card__meta">Rok vydání: …</div>
+            <p>Publikace reflektující historické a umělecké debaty.</p>
+          </div>
+        </article>
+  
+        <article class="card card--year">
+          <figure class="card__media">
+            <img src="https://picsum.photos/400/250?random=16" alt="Bohuslav Martinů a Jan Zrzavý">
+          </figure>
+          <div class="card__body">
+            <h3 class="h5">Bohuslav Martinů a Jan Zrzavý</h3>
+            <div class="card__meta">Rok vydání: …</div>
+            <p>Kniha o přátelství a inspiraci dvou významných osobností.</p>
+
+    </div>
+  </section>
+  
+
+  <!-- Partnerství -->
+  <section id="partnerstvi" class="section">
+    <div class="container">
+      <div class="kicker">Spolupráce</div>
+      <h2>Partnerství s institucemi</h2>
+      <p class="mt-2">Spolupráce s muzei, galeriemi a dalšími organizacemi.</p>
+    
+    </div>
+  </section>
+
+  <div class="section-cta">
+    <a class="btn btn--outline" href="index.html">← Zpět na homepage</a>
+    <a class="btn btn--outline" href="index.html#aktuality">Aktuality</a>
+    <a class="btn btn--outline" href="o-spolku.html#o-spolku">O spolku</a>
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer id="kontakt" class="footer">
+  <div class="container footer__cols">
+    <div>
+      <strong>Za záchranu rodného domu Jana Zrzavého, z.s.</strong><br>
+      582 31 Okrouhlice 62<br>
+      IČ: 22725181
+    </div>
+    <div>
+      <div><strong>Účet spolku</strong></div>
+      <div>Č.ú.: 3807356001/5500</div>
+      <div>IBAN: CZ8355000000003807356001</div>
+      <div>SWIFT: RZBCCZPP</div>
+    </div>
+    <div>
+      <div><strong>Odkazy</strong></div>
+      <div class="mt-2">© <span id="year"></span> Martin Langpaul</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
