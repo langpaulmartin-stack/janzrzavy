@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Okrouhlice | Jan Zrzavý</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Okrouhlice – obec na řece Sázavě, domov Jana Zrzavého. Historie místa, souvislosti a tipy k návštěvě.">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Favicon (doporučené soubory v kořeni webu) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Okrouhlice | Jan Zrzavý">
+  <meta property="og:description" content="Okrouhlice – obec na řece Sázavě, domov Jana Zrzavého. Historie místa, souvislosti a tipy k návštěvě.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="favicon-512.png">
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="container nav">
+    <div class="nav__brand">
+      <a href="index.html" class="nav__logo">
+        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/janzrzavy/main/Logo%20Spolku%20Za%20Z%C3%A1chranu%20Rodn%C3%A9ho%20Domu.png" 
+             alt="Logo Jan Zrzavý">
+      </a>
+      <a href="index.html" class="nav__orgname">Spolek Za záchranu rodného domu Jana Zrzavého</a>
+    </div>
+
+    <!-- Desktop menu -->
+    <nav class="nav__links" aria-label="Hlavní navigace">
+      <!-- Jan Zrzavý dropdown -->
+      <div class="menu-item has-dropdown">
+        <button class="menu-trigger" aria-haspopup="true" aria-expanded="false">
+          Jan Zrzavý
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+          </svg>
+        </button>
+        <div class="dropdown">
+          <a href="jan-zrzavy.html">Profil</a>
+          <a href="jan-zrzavy.html">Vzpomínky</a>
+        </div>
+      </div>
+
+      <!-- Místa -->
+      <div class="menu-item has-dropdown">
+        <button class="menu-trigger" aria-haspopup="true" aria-expanded="false">
+          Místa
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+          </svg>
+        </button>
+        <div class="dropdown">
+          <a href="okrouhlice.html" aria-current="page">Okrouhlice</a>
+          <a href="krucemburk.html">Krucemburk</a>
+          <a href="camaret.html">Camaret sur Mer</a>
+        </div>
+      </div>
+
+      <a href="aktuality.html">Aktuality</a>
+      <a href="o-spolku.html#o-spolku">Cíle spolku</a>
+      <a href="aktivity.html">Aktivity</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <!-- Mobile toggle -->
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Otevřít menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile panel -->
+  <nav class="nav__panel" id="mobileMenu" aria-label="Mobilní navigace" hidden>
+    <details class="mobile-group">
+      <summary>Jan Zrzavý</summary>
+      <a href="jan-zrzavy.html">Profil</a>
+      <a href="jan-zrzavy.html">Vzpomínky</a>
+    </details>
+
+    <details class="mobile-group">
+      <summary>Místa</summary>
+      <a href="okrouhlice.html" aria-current="page">Okrouhlice</a>
+      <a href="krucemburk.html">Krucemburk</a>
+      <a href="camaret.html">Camaret-sur-Mer</a>
+    </details>
+
+    <a href="aktuality.html">Aktuality</a>
+    <a href="o-spolku.html#o-spolku">Cíle spolku</a>
+    <a href="aktivity.html">Aktivity</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<main id="main">
+
+ <!-- Hero -->
+<section class="section section--image" 
+style="--bg-url: url('https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_6467_web.jpg');">
+<div class="container">
+  <div class="kicker">Místo</div>
+  <h1>Okrouhlice</h1>
+  <p class="mt-2">Obec na Českomoravské vrchovině, úzce spojená se životem Jana Zrzavého.</p>
+  <div class="mt-3">
+    <a class="btn btn--outline" href="#o-obci">O obci</a>
+    <a class="btn btn--outline" href="#souvislosti">Souvislosti</a>
+    <a class="btn btn--outline" href="#tipy">Tipy na návštěvu</a>
+  </div>
+</div>
+</section>
+
+
+  <!-- O obci -->
+<section id="o-obci" class="section">
+    <div class="container">
+      <div class="kicker">O obci</div>
+      <h2>Historie</h2>
+  
+      <h3 class="mt-2">První záznamy o Okrouhlici</h3>
+      <p class="mt-1">
+        Bližší informace o založení Okrouhlice a vsí, které jsou dnes její součástí, jsou stále nejasné. Lze předpokládat, že Okrouhlice vznikla z iniciativy benediktinského vilémovského kláštera, který od 12. století kolonizoval do té doby téměř netknuté území mezi Čáslaví a nynějším Havlíčkovým Brodem. Klášter severně od Okrouhlice založil nebo vlastnil několik vsí (například Lučici nebo Skuhrov, kde tamější kostely byly ve 2. polovině 14. století patronátními vilémovského kláštera). Takto mohla vzniknout i původní ves Okrouhlice.
+      </p>
+      <p class="mt-1">
+        Prvním doloženým majitelem k roku 1388 nebo 1390 se stává Bernart z Okrouhlice, který získal dědičným nájmem vsi Okrouhlici a Chlístov od vilémovského opata Petra. Pro Okrouhlici tak nastává zemanské období. Na přelomu 14. a 15. století dochází i k postupné výstavbě zemanské tvrze. Ruprecht, pravděpodobně vnuk Bernarta, pak jako další z tohoto rodu zanechal v historii svou stopu roku 1415 díky podpisu a přiložené pečeti na stížném listu proti upálení Jana Husa. Roku 1454 odkoupil Okrouhlici Tomek z Kněnic, zakladatel poměrně známého rodu Okrouhlických z Kněnic. Dalšími vlastníky se stali v první polovině 16. století Dobřenští z Dobřenic.
+      </p>
+  
+      <h3 class="mt-3">Okrouhlice v 16. století</h3>
+      <p class="mt-1">
+        Důležitým obdobím pro Okrouhlici, Babice, Vadín a Chlístov byla pak 2. polovina 16. století, kdy se tyto vsi staly majetkem mocných Trčků z Lípy a byly začleněny do světelského panství. Olešnice a Valečov patřily k haberskému panství. Z Okrouhlice, dosud zemanského sídla, se stal panský dvůr. Třicetiletá válka však byla pro české země pohromou a nevyhnuly se jí ani vsi na světelském panství, které navíc byly po účasti Trčků na Valdštejnově povstání roku 1634 zkonfiskovány. Konfiskací došlo k rozdělení trčkovského majetku a vznikly podmínky pro vytvoření okrouhlického panství, které roku 1636 získal za válečné zásluhy císařský generál Wolf Adam Pappenheim. Sám však neměl na okrouhlickém panství zájem, a proto ji hned následující rok prodal Filipu Adamu ze Solms, jehož otec před necelými patnácti lety koupil sousední herálecké panství. Tím na jistou dobu mělo herálecké a okrouhlické panství jednoho majitele. Po smrti hraběte ze Solms se jeho manželka a dědička provdala za Ferdinanda Rudolfa z Waldsteina, kterého lze považovat za nejdůležitějšího majitele okrouhlického panství. Hrabě Waldstein zrekonstruoval původní zemanskou věž, přistavěl další dvě křídla a v barokním stylu se zasloužil o postavení zahrady, velkého sálu, míčovny a kaple sv. Anny. Jako okrouhlický majitel byl rovněž patronem krásnohorského kostela, který také za jeho přičinění v této době došel celkové rekonstrukce v barokním stylu. Za jeho života se vsi a obyvatelé po třicetileté válce postupně vzpamatovávali po hospodářské i finanční stránce.
+      </p>
+  
+      <h3 class="mt-3">Druhá polovina 19. století</h3>
+      <p class="mt-1">
+        Posledními zásadními majiteli Okrouhlice se stali na počátku 18. století Strakové z Nedabylic. První okrouhlický majitel Jan Petr Straka svou závětí rozhodnul o budoucnosti panství na tři sta let dopředu. Ve své poslední vůli myslel na případné vymření svého rodu po meči, což se opravdu o necelých sedmdesát let později stalo. V takovém případě se měly statky Straků z Nedabylic stát nadačními statky, které měly financovat studium a výchovu chudých šlechticů i nešlechticů. Stavba (Strakovy) akademie pro chudé české šlechtice však započala až v devadesátých letech 19. století.
+      </p>
+      <p class="mt-1">
+        Druhá polovina devatenáctého století je pro rozvoj Okrouhlice dalším zásadním obdobím. Okrouhlice sice byla pro okrouhlické panství důležitá jako správní a hospodářské centrum velkostatku, ale stálo zde mimo zámek pouze několik domků. Až železnice, která měla dokonce vést původně severněji přes Veselý Žďár, zapříčinila růst Okrouhlice, který lze sledovat do dnešní doby.
+      </p>
+      <p class="mt-1">
+        Dynamické 20. století s sebou přineslo několik pozitivních i negativních událostí. Jednak dvě světové války, které se v okrouhlických obcích projevily několika padlými či dočasnou četnickou stanicí na Okrouhlici pro účelnější kontrolu obyvatel za protektorátu, na druhou stranu však i vznikem družstevního lihovaru, továrnou na hroznový sirup a škrobovou moučku, vznikem tzv. kampeličky či zemědělského družstva, což vedlo k dalšímu rozvoji obce. Stranou pak nemůže zůstat dobové sdružování obyvatel v různých spolcích, ať už se jedná o Sokol, čtenářsko-ochotnický spolek Havlíček či pionýrskou organizaci při okrouhlické základní škole.
+      </p>
+    </div>
+  </section>
+  
+
+  <!-- Okrouhlice a Jan Zrzavý -->
+  <section id="souvislosti" class="section section--soft">
+    <div class="container">
+      <div class="kicker">Souvislosti</div>
+      <h2>Okrouhlice a Jan Zrzavý</h2>
+      <p class="mt-2">
+        Okrouhlice je rodnou obcí malíře Jana Zrzavého a místem, s nímž byl silně spjat – v obci stála škola, kde
+        jeho otec působil jako řídící učitel, a kde rodina dlouhá léta žila. Péče o odkaz Jana Zrzavého a kulturní
+        život v obci patří k dlouhodobým cílům našeho spolku.
+      </p>
+
+      <div class="grid grid--3 mt-3">
+        <article class="card">
+          <h3>Rodný dům a škola</h3>
+          <p class="mt-2">Budova někdejší školy v Okrouhlici – rodinné zázemí a symbolické místo Zrzavého dětství.</p>
+        </article>
+        <article class="card">
+          <h3>Krajina na Sázavě</h3>
+          <p class="mt-2">Řeka, meandry a stráně – motivy, které formovaly cit pro krajinu a světlo.</p>
+        </article>
+        <article class="card">
+          <h3>Živá tradice</h3>
+          <p class="mt-2">Aktivity spolku a partnerů rozvíjejí kulturní dění v obci i regionu.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Co navštívit / tipy -->
+<section id="tipy" class="section">
+    <div class="container">
+      <div class="kicker">Tipy</div>
+      <h2>Co navštívit</h2>
+      <div class="grid grid--3 mt-3">
+        <article class="card card--year">
+          <figure class="card__media">
+            <img src="https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_2041.jpg" alt="Centrum obce Okrouhlice">
+          </figure>
+          <div class="card__body">
+            <h3 class="h5">Centrum obce</h3>
+            <p>Náměstí, kostel a okolí rodného domu Jana Zrzavého.</p>
+          </div>
+        </article>
+        <article class="card card--year">
+          <figure class="card__media">
+            <img src="https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/vlak_smrcna.jpeg" alt="Krajina kolem Okrouhlice">
+          </figure>
+          <div class="card__body">
+            <h3 class="h5">Okolní krajina</h3>
+            <p>Procházky kolem Sázavy a na Lipnici.</p>
+          </div>
+        </article>
+        <article class="card card--year">
+            <figure class="card__media">
+              <img src="https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_4287.png" alt="Jeníkova špacírka – krajina kolem Okrouhlice">
+            </figure>
+            <div class="card__body">
+              <h3 class="h5">Jeníkova špacírka</h3>
+              <p>Tradiční pochod krajinou spojenou s Janem Zrzavým.</p>
+            </div>
+          </article>
+      </div>
+    </div>
+  </section>
+
+<!-- Footer -->
+<footer id="kontakt" class="footer">
+  <div class="container footer__cols">
+    <div>
+      <strong>Za záchranu rodného domu Jana Zrzavého, z.s.</strong><br>
+      582 31 Okrouhlice 62<br>
+      IČ: 22725181
+    </div>
+    <div>
+      <div><strong>Účet spolku</strong></div>
+      <div>Č.ú.: 3807356001/5500</div>
+      <div>IBAN: CZ8355000000003807356001</div>
+      <div>SWIFT: RZBCCZPP</div>
+    </div>
+    <div>
+      <div><strong>Odkazy</strong></div>
+      <div class="mt-2">© <span id="year"></span> Martin Langpaul</div>
+    </div>
+  </div>
+</footer>
+
+<!-- JS: mobile nav + dropdown (stejné chování jako na indexu) -->
+<script>
+(function(){
+  const btn = document.getElementById('navToggle');
+  const panel = document.getElementById('mobileMenu');
+  if(!btn || !panel) return;
+  function openMenu(){ panel.hidden=false; panel.classList.add('open'); btn.setAttribute('aria-expanded','true'); btn.setAttribute('aria-label','Zavřít menu'); }
+  function closeMenu(){ panel.classList.remove('open'); btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Otevřít menu'); panel.hidden=true; }
+  function toggleMenu(){ (btn.getAttribute('aria-expanded')==='true') ? closeMenu() : openMenu(); }
+  btn.addEventListener('click', toggleMenu);
+  panel.addEventListener('click', (e)=>{ if(e.target.tagName==='A'){ closeMenu(); } });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeMenu(); } });
+  window.addEventListener('resize', ()=>{ if(window.innerWidth>900) closeMenu(); });
+})();
+</script>
+
+<script>
+(function(){
+  document.querySelectorAll('.has-dropdown').forEach(dd=>{
+    const btn = dd.querySelector('.menu-trigger');
+    const menu = dd.querySelector('.dropdown');
+    const open = ()=>{ dd.classList.add('open'); btn.setAttribute('aria-expanded','true'); };
+    const close = ()=>{ dd.classList.remove('open'); btn.setAttribute('aria-expanded','false'); };
+    const toggle = ()=>{ dd.classList.contains('open') ? close() : open(); };
+    btn?.addEventListener('click', (e)=>{ e.preventDefault(); toggle(); });
+    document.addEventListener('click', (e)=>{ if(!dd.contains(e.target)) close(); });
+    dd.addEventListener('keydown', (e)=>{
+      const items = Array.from(menu.querySelectorAll('a')); const idx = items.indexOf(document.activeElement);
+      if(e.key==='Escape'){ close(); btn.focus(); }
+      if(e.key==='ArrowDown'){ e.preventDefault(); open(); (items[idx+1]||items[0]).focus(); }
+      if(e.key==='ArrowUp'){ e.preventDefault(); open(); (items[idx-1]||items[items.length-1]).focus(); }
+    });
+  });
+})();
+</script>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
