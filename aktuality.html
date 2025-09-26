@@ -190,84 +190,113 @@
 // rok do patičky
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/** --- DATA: články (tituly & data převzata z janzrzavy.cz/aktuality) --- */
+/** --- DATA: články (tituly & data) + tematický výběr fotek z JZ-images --- */
+const IMG = (name)=>`https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/${name}`;
+
 const POSTS = [
-  {t:"Pojďte s námi na 16. Jeníkovu špacírku!", d:"2025-09-18", dt:"18. září 2025", u:"https://www.janzrzavy.cz/aktuality/pojdte-s-nami-na-16-jenikovu-spacirku/", img:"https://picsum.photos/seed/jz-2025a/800/500", ex:"Pozvánka na 16. ročník Jeníkovy špacírky."},
-  {t:"REFRESH Jan Zrzavý | 2025", d:"2025-05-06", dt:"6. května 2025", u:"https://www.janzrzavy.cz/aktuality/refresh-jan-zrzavy-2025/", img:"https://picsum.photos/seed/jz-2025b/800/500", ex:"Výzva k účasti ve 4. ročníku studentské soutěže."},
-  {t:"Vernisáž výstavy REFRESH Jan Zrzavý | 2024", d:"2024-10-20", dt:"20. října 2024", u:"https://www.janzrzavy.cz/aktuality/vernisaz-vystavy-refresh-jan-zrzavy-2024/", img:"https://picsum.photos/seed/jz-2024a/800/500", ex:"Ohlédnutí za vernisáží výstavy REFRESH 2024."},
-  {t:"REFRESH Jan Zrzavý | 2024", d:"2024-05-04", dt:"4. května 2024", u:"https://www.janzrzavy.cz/aktuality/refresh-jan-zrzavy-2024/", img:"https://picsum.photos/seed/jz-2024b/800/500", ex:"Pozvánka na 3. ročník soutěže."},
-  {t:"Spory o Jana Žižku - Cena Kraje Vysočina na podzimním knižním veletrhu", d:"2023-10-20", dt:"20. října 2023", u:"https://www.janzrzavy.cz/aktuality/spory-o-jana-zizku-cena-kraje-vysocina/", img:"https://picsum.photos/seed/jz-2023a/800/500", ex:"Kniha oceněna na veletrhu v Havlíčkově Brodě."},
-  {t:"Vernisáž výstavy REFRESH Jan Zrzavý | 2023", d:"2023-09-07", dt:"7. září 2023", u:"https://www.janzrzavy.cz/aktuality/vernisaz-vystavy-refresh-jan-zrzavy-2023/", img:"https://picsum.photos/seed/jz-2023b/800/500", ex:"Report z vernisáže soutěže REFRESH 2023."},
-  {t:"REFRESH Jan Zrzavý | 2023", d:"2023-05-06", dt:"6. května 2023", u:"https://www.janzrzavy.cz/aktuality/refresh-jan-zrzavy-2023/", img:"https://picsum.photos/seed/jz-2023c/800/500", ex:"Pozvánka na 2. ročník soutěže."},
-  {t:"Odešel Jaroslav Šoupal", d:"2023-03-28", dt:"28. března 2023", u:"https://www.janzrzavy.cz/aktuality/odesel-jaroslav-soupal/", img:"https://picsum.photos/seed/jz-2023d/800/500", ex:"Vzpomínka na předsedu spolku."},
-  {t:"Jeníkova špacírka", d:"2022-10-12", dt:"12. října 2022", u:"https://www.janzrzavy.cz/aktuality/jenikova-spacirka-2022/", img:"https://picsum.photos/seed/jz-2022a/800/500", ex:"Ohlédnutí za 13. ročníkem."},
-  {t:"Vernisáž výstavy REFRESH Jan Zrzavý | 2022", d:"2022-09-03", dt:"3. září 2022", u:"https://www.janzrzavy.cz/aktuality/vernisaz-vystavy-refresh-jan-zrzavy-2022/", img:"https://picsum.photos/seed/jz-2022b/800/500", ex:"Vernisáž studentské soutěže."},
-  {t:"Friends of the Czech heritage - výroční setkání v Ledeburských zahradách", d:"2022-07-12", dt:"12. července 2022", u:"https://www.janzrzavy.cz/aktuality/friends-of-the-czech-heritage-vyrocni-setkani/", img:"https://picsum.photos/seed/jz-2022c/800/500", ex:"Poděkování za podporu."},
-  {t:"REFRESH Jan Zrzavý", d:"2022-06-02", dt:"2. června 2022", u:"https://www.janzrzavy.cz/aktuality/refresh-jan-zrzavy/", img:"https://picsum.photos/seed/jz-2022d/800/500", ex:"1. ročník soutěže – pozvánka."},
-  {t:"Lipnická bible v Chotěboři", d:"2022-04-21", dt:"21. dubna 2022", u:"https://www.janzrzavy.cz/aktuality/lipnicka-bible-v-chotebori/", img:"https://picsum.photos/seed/jz-2022e/800/500", ex:"Zapůjčená digitální podoba rukopisu."},
-  {t:"Magnesia litera 2022: Zvítězili jsme v kategorii za nakladatelský počin", d:"2022-04-10", dt:"10. dubna 2022", u:"https://www.janzrzavy.cz/aktuality/magnesia-litera-2022-zvitezili-jsme/", img:"https://picsum.photos/seed/jz-2022f/800/500", ex:"Ocenění pro publikaci Lipnická bible."},
-  {t:"Navštívili jsme Galerii Krause v Pfäffikonu (Švýcarsko)", d:"2022-04-10", dt:"10. dubna 2022", u:"https://www.janzrzavy.cz/aktuality/navstivili-jsme-galerii-krause/", img:"https://picsum.photos/seed/jz-2022g/800/500", ex:"Report z návštěvy galerie."},
-  {t:"Nově nalezené foto - světový unikát", d:"2022-04-01", dt:"1. dubna 2022", u:"https://www.janzrzavy.cz/aktuality/nove-nalezene-foto-svetovy-unikat/", img:"https://picsum.photos/seed/jz-2022h/800/500", ex:"Aprílové odlehčení."},
-  {t:"Lipnická bible - nominace na cenu Magnesia litera 2022", d:"2022-03-15", dt:"15. března 2022", u:"https://www.janzrzavy.cz/aktuality/lipnicka-bible-nominace-magnesia-litera-2022/", img:"https://picsum.photos/seed/jz-2022i/800/500", ex:"Zpráva o nominaci."},
-  {t:"Končí výstava v Knihovně Vysočiny v Havlíčkově Brodě", d:"2022-03-06", dt:"6. března 2022", u:"https://www.janzrzavy.cz/aktuality/konci-vystava-v-knihovne-vysociny/", img:"https://picsum.photos/seed/jz-2022j/800/500", ex:"Ohlédnutí za výstavou."},
-  {t:"Jan Zrzavý a francouzská Bretaň", d:"2022-02-27", dt:"27. února 2022", u:"https://www.janzrzavy.cz/aktuality/jan-zrzavy-a-francouzska-bretan/", img:"https://picsum.photos/seed/jz-2022k/800/500", ex:"Tip na reportáž ČT."},
-  {t:"Zemřel Jiří Milichovský", d:"2022-01-14", dt:"14. ledna 2022", u:"https://www.janzrzavy.cz/aktuality/zemrel-jiri-milichovsky/", img:"https://picsum.photos/seed/jz-2022l/800/500", ex:"Vzpomínka."},
-  {t:"Adventní Zrzavý Na skalce", d:"2021-12-17", dt:"17. prosince 2021", u:"https://www.janzrzavy.cz/aktuality/adventni-zrzavy-na-skalce/", img:"https://picsum.photos/seed/jz-2021a/800/500", ex:"Pozvánka do ateliéru."},
-  {t:"Jeníkova špacírka 2021", d:"2021-10-05", dt:"5. října 2021", u:"https://www.janzrzavy.cz/aktuality/jenikova-spacirka-2021/", img:"https://picsum.photos/seed/jz-2021b/800/500", ex:"Ohlédnutí za 12. ročníkem."},
-  {t:"Lipnická bible v Klementinu", d:"2021-09-06", dt:"6. září 2021", u:"https://www.janzrzavy.cz/aktuality/lipnicka-bible-v-klementinu/", img:"https://picsum.photos/seed/jz-2021c/800/500", ex:"Vernisáž v Zrcadlové kapli."},
-  {t:"Lipnické léto s lipnickou biblí", d:"2021-06-27", dt:"27. června 2021", u:"https://www.janzrzavy.cz/aktuality/lipnicke-leto-s-lipnickou-bibli/", img:"https://picsum.photos/seed/jz-2021d/800/500", ex:"Letní výstava na Lipnici."},
-  {t:"Vánoční noviny 2020", d:"2020-12-24", dt:"24. prosince 2020", u:"https://www.janzrzavy.cz/aktuality/vanocni-noviny-2020/", img:"https://picsum.photos/seed/jz-2020a/800/500", ex:"Souhrn dění roku 2020."},
-  {t:"Jiří Peňás: Zarezlý střed v Okrouhlici", d:"2020-09-20", dt:"20. září 2020", u:"https://www.janzrzavy.cz/aktuality/jiri-penas-zarezly-stred-v-okrouhlici/", img:"https://picsum.photos/seed/jz-2020b/800/500", ex:"Text Jiřího Peňáse."},
-  {t:"Tisková zpráva: Jan Zrzavý – malíř domova bez domova", d:"2020-08-14", dt:"14. srpna 2020", u:"https://www.janzrzavy.cz/aktuality/tiskova-zprava-jan-zrzavy-malir-domova-bez-domova/", img:"https://picsum.photos/seed/jz-2020c/800/500", ex:"Prohlášení spolku."},
-  {t:"Jdeme online", d:"2020-07-29", dt:"29. července 2020", u:"https://www.janzrzavy.cz/aktuality/jdeme-online/", img:"https://picsum.photos/seed/jz-2020d/800/500", ex:"Spuštění webu."},
-  {t:"Z výroční členské schůze", d:"2020-07-20", dt:"20. července 2020", u:"https://www.janzrzavy.cz/aktuality/z-vyrocni-clenske-schuze-2020/", img:"https://picsum.photos/seed/jz-2020e/800/500", ex:"Shrnutí jednání."},
-  {t:"Dopis zastupitelům Obce Okrouhlice", d:"2020-07-09", dt:"9. července 2020", u:"https://www.janzrzavy.cz/aktuality/dopis-zastupitelum-obce-okrouhlice/", img:"https://picsum.photos/seed/jz-2020f/800/500", ex:"Žádost o vyjádření."},
-  {t:"Zemřel Stanislav Michek", d:"2020-06-30", dt:"30. června 2020", u:"https://www.janzrzavy.cz/aktuality/zemrel-stanislav-michek/", img:"https://picsum.photos/seed/jz-2020g/800/500", ex:"Vzpomínka."},
-  {t:"Ohlédnutí za rokem 2019", d:"2020-01-04", dt:"4. ledna 2020", u:"https://www.janzrzavy.cz/aktuality/ohlednuti-za-rokem-2019/", img:"https://picsum.photos/seed/jz-2019z/800/500", ex:"Souhrn roku 2019."},
-  {t:"10. jubilejní špacírka představuje svoje trasy", d:"2019-09-20", dt:"20. září 2019", u:"https://www.janzrzavy.cz/aktuality/10-jubilejni-spacirka-predstavuje-svoje-trasy/", img:"https://picsum.photos/seed/jz-2019a/800/500", ex:"Pozvánka a trasy."},
-  {t:"2009-2019", d:"2019-07-02", dt:"2. července 2019", u:"https://www.janzrzavy.cz/aktuality/2009-2019/", img:"https://picsum.photos/seed/jz-2019b/800/500", ex:"Milník 10 let spolku."},
-  {t:"Století republiky v Okrouhlici", d:"2018-11-02", dt:"2. listopadu 2018", u:"https://www.janzrzavy.cz/aktuality/stoleti-republiky-v-okrouhlici/", img:"https://picsum.photos/seed/jz-2018a/800/500", ex:"Oslavy 100 let."},
-  {t:"Kozí ulice", d:"2018-07-23", dt:"23. července 2018", u:"https://www.janzrzavy.cz/aktuality/kozi-ulice/", img:"https://picsum.photos/seed/jz-2018b/800/500", ex:"Cedulka pro nejstarší ulici."},
-  {t:"9.Jeníkova špacírka", d:"2018-07-20", dt:"20. července 2018", u:"https://www.janzrzavy.cz/aktuality/9-jenikova-spacirka/", img:"https://picsum.photos/seed/jz-2018c/800/500", ex:"Pozvánka."},
-  {t:"2018 - rok zlomu?", d:"2018-05-29", dt:"29. května 2018", u:"https://www.janzrzavy.cz/aktuality/2018-rok-zlomu/", img:"https://picsum.photos/seed/jz-2018d/800/500", ex:"Komentář k dění 2017–2018."},
-  {t:"6. Jeníkova černá hodinka", d:"2017-12-12", dt:"12. prosince 2017", u:"https://www.janzrzavy.cz/aktuality/6-jenikova-cerna-hodinka/", img:"https://picsum.photos/seed/jz-2017a/800/500", ex:"Pozvánka/ohlédnutí."},
-  {t:"Krásné Vánoce a šťastný nový rok", d:"2017-12-12", dt:"12. prosince 2017", u:"https://www.janzrzavy.cz/aktuality/krasne-vanoce-a-stastny-novy-rok-2018/", img:"https://picsum.photos/seed/jz-2017b/800/500", ex:"PF."},
-  {t:"8.Jeníkova špacírka", d:"2017-09-14", dt:"14. září 2017", u:"https://www.janzrzavy.cz/aktuality/8-jenikova-spacirka/", img:"https://picsum.photos/seed/jz-2017c/800/500", ex:"Pozvánka."},
-  {t:"Sto let", d:"2017-06-02", dt:"2. června 2017", u:"https://www.janzrzavy.cz/aktuality/sto-let/", img:"https://picsum.photos/seed/jz-2017d/800/500", ex:"Reflexe výročí."},
-  {t:"Budujeme stezku Krajem Jana Zrzavého.", d:"2012-04-17", dt:"17. dubna 2012", u:"https://www.janzrzavy.cz/aktuality/budujeme-stezku-krajem-jana-zrzaveho/", img:"https://picsum.photos/seed/jz-2012a/800/500", ex:"Projekt naučné stezky."},
-  {t:"Cesta do \"pravěku\" Okrouhlice", d:"2011-11-17", dt:"17. listopadu 2011", u:"https://www.janzrzavy.cz/aktuality/cesta-do-praveku-okrouhlice/", img:"https://picsum.photos/seed/jz-2011a/800/500", ex:"Soutěž pro žáky ZŠ."},
-  {t:"Jeníkova špacírka č. 2, 1. října 2011", d:"2011-10-16", dt:"16. října 2011", u:"https://www.janzrzavy.cz/aktuality/jenikova-spacirka-c-2/", img:"https://picsum.photos/seed/jz-2011b/800/500", ex:"Report z druhého ročníku."},
-  {t:"Výtvarná dílna, ročník druhý", d:"2011-08-16", dt:"16. srpna 2011", u:"https://www.janzrzavy.cz/aktuality/vytvarna-dilna-rocnik-druhy/", img:"https://picsum.photos/seed/jz-2011c/800/500", ex:"Letní dílna pro děti."},
-  {t:"Letní výtvarná dílna pro děti", d:"2011-05-30", dt:"30. května 2011", u:"https://www.janzrzavy.cz/aktuality/letni-vytvarna-dilna-pro-deti/", img:"https://picsum.photos/seed/jz-2011d/800/500", ex:"Pozvánka."},
-  {t:"Historie špýcharu", d:"2011-05-24", dt:"24. května 2011", u:"https://www.janzrzavy.cz/aktuality/historie-spychara/", img:"https://picsum.photos/seed/jz-2011e/800/500", ex:"Historické okénko."},
-  {t:"Jeníkova špacírka 2011", d:"2011-05-15", dt:"15. května 2011", u:"https://www.janzrzavy.cz/aktuality/jenikova-spacirka-2011/", img:"https://picsum.photos/seed/jz-2011f/800/500", ex:"Pozvánka."},
-  {t:"Okrouhlice bude mít poznávací stezku!", d:"2011-05-02", dt:"2. května 2011", u:"https://www.janzrzavy.cz/aktuality/okrouhlice-bude-mit-poznávací-stezku/", img:"https://picsum.photos/seed/jz-2011g/800/500", ex:"Dotace ROP Jihovýchod."},
-  {t:"Za malířem do Benátek", d:"2011-04-29", dt:"29. dubna 2011", u:"https://www.janzrzavy.cz/aktuality/za-malirem-do-benatek/", img:"https://picsum.photos/seed/jz-2011h/800/500", ex:"O velikonoční cestě do Benátek."},
-  {t:"Úprava areálu školy pokračuje", d:"2011-04-10", dt:"10. dubna 2011", u:"https://www.janzrzavy.cz/aktuality/uprava-arealu-skoly-pokracuje/", img:"https://picsum.photos/seed/jz-2011i/800/500", ex:"Rekonstrukční práce."},
-  {t:"Žhavá novinka", d:"2011-04-01", dt:"1. dubna 2011", u:"https://www.janzrzavy.cz/aktuality/zhava-novinka/", img:"https://picsum.photos/seed/jz-2011j/800/500", ex:"Aprílová glosa."},
-  {t:"Chvilky s Janem Zrzavým", d:"2011-03-15", dt:"15. března 2011", u:"https://www.janzrzavy.cz/aktuality/chvilky-s-janem-zrzavym/", img:"https://picsum.photos/seed/jz-2011k/800/500", ex:"Vydání vzpomínkových črt."},
-  {t:"Jan Zrzavý. Kouzelník, který uměl namalovat duši", d:"2010-11-16", dt:"16. listopadu 2010", u:"https://www.janzrzavy.cz/aktuality/jan-zrzavy-kouzelnik-ktery-umel-namalovat-dusi-2/", img:"https://picsum.photos/seed/jz-2010a/800/500", ex:"Výročí 120 let od narození."},
-  {t:"Na Knižním veletrhu", d:"2010-11-16", dt:"16. listopadu 2010", u:"https://www.janzrzavy.cz/aktuality/na-kniznim-veletrhu/", img:"https://picsum.photos/seed/jz-2010b/800/500", ex:"Účast na veletrhu."},
-  {t:"Kouzelník, který uměl namalovat duši", d:"2010-11-06", dt:"6. listopadu 2010", u:"https://www.janzrzavy.cz/aktuality/kouzelnik-ktery-umel-namalovat-dusi/", img:"https://picsum.photos/seed/jz-2010c/800/500", ex:"Pásmo v sokolovně."},
-  {t:"Jeníkova špacírka", d:"2010-10-06", dt:"6. října 2010", u:"https://www.janzrzavy.cz/aktuality/jenikova-spacirka-2010/", img:"https://picsum.photos/seed/jz-2010d/800/500", ex:"Report 2010."},
-  {t:"Bohuslav Martinů na návštěvě u Jana Zrzavého", d:"2010-08-16", dt:"16. srpna 2010", u:"https://www.janzrzavy.cz/aktuality/bohuslav-martinu-na-navsteve-u-jana-zrzaveho/", img:"https://picsum.photos/seed/jz-2010e/800/500", ex:"Výstava na škole."},
-  {t:"Výtvarná dílna pro děti", d:"2010-08-16", dt:"16. srpna 2010", u:"https://www.janzrzavy.cz/aktuality/vytvarna-dilna-pro-deti-2010/", img:"https://picsum.photos/seed/jz-2010f/800/500", ex:"Dílna v okrouhlické škole."},
-  {t:"Špacírka Jana Zrzavého", d:"2010-06-30", dt:"30. června 2010", u:"https://www.janzrzavy.cz/aktuality/spacirka-jana-zrzaveho/", img:"https://picsum.photos/seed/jz-2010g/800/500", ex:"Pozvánka."},
-  {t:"Kulturní aktivity v létě", d:"2010-06-25", dt:"25. června 2010", u:"https://www.janzrzavy.cz/aktuality/kulturni-aktivity-v-lete/", img:"https://picsum.photos/seed/jz-2010h/800/500", ex:"Zážitkové dílny."},
-  {t:"Dešťová voda už nepodmáčí školu", d:"2010-05-25", dt:"25. května 2010", u:"https://www.janzrzavy.cz/aktuality/destova-voda-uz-nepodmaci-skolu/", img:"https://picsum.photos/seed/jz-2010i/800/500", ex:"Kanalizace u školy."},
-  {t:"Uprostřed jara", d:"2010-04-16", dt:"16. dubna 2010", u:"https://www.janzrzavy.cz/aktuality/uprostred-jara/", img:"https://picsum.photos/seed/jz-2010j/800/500", ex:"Pozdrav jara."},
-  {t:"Zrzavý Martinů", d:"2010-04-15", dt:"15. dubna 2010", u:"https://www.janzrzavy.cz/aktuality/zrzavy-martinu/", img:"https://picsum.photos/seed/jz-2010k/800/500", ex:"Výstava o přátelství autorů."},
-  {t:"PF 2010", d:"2009-12-31", dt:"31. prosince 2009", u:"https://www.janzrzavy.cz/aktuality/pf-2010/", img:"https://picsum.photos/seed/jz-2009a/800/500", ex:"Novoroční přání."},
-  {t:"Osvětlení rodného domu Jana Zrzavého", d:"2009-11-05", dt:"5. listopadu 2009", u:"https://www.janzrzavy.cz/aktuality/osvetleni-rodneho-domu-jana-zrzaveho/", img:"https://picsum.photos/seed/jz-2009b/800/500", ex:"Slavnostní nasvícení fasády."},
-  {t:"Návštěva představitelů Nadace Jana Evangelisty Purkyně", d:"2009-10-06", dt:"6. října 2009", u:"https://www.janzrzavy.cz/aktuality/navsteva-predstavitelu-nadace-j-e-purkyne/", img:"https://picsum.photos/seed/jz-2009c/800/500", ex:"Zpráva o návštěvě."},
-  {t:"Instalace tabule před rodným domem", d:"2009-09-15", dt:"15. září 2009", u:"https://www.janzrzavy.cz/aktuality/instalace-tabule-pred-rodnym-domem/", img:"https://picsum.photos/seed/jz-2009d/800/500", ex:"Info tabule u školy."}
+  // 2025
+  {t:"Pojďte s námi na 16. Jeníkovu špacírku!", d:"2025-09-18", dt:"18. září 2025", u:"https://www.janzrzavy.cz/aktuality/pojdte-s-nami-na-16-jenikovu-spacirku/", img:IMG("jenikova-spacirka-382.jpg"), ex:"Pozvánka na 16. ročník Jeníkovy špacírky."},
+  {t:"REFRESH Jan Zrzavý | 2025", d:"2025-05-06", dt:"6. května 2025", u:"https://www.janzrzavy.cz/aktuality/refresh-jan-zrzavy-2025/", img:IMG("P1080807_slider_top.jpg"), ex:"Výzva k účasti ve 4. ročníku studentské soutěže."},
+
+  // 2024
+  {t:"Vernisáž výstavy REFRESH Jan Zrzavý | 2024", d:"2024-10-20", dt:"20. října 2024", u:"https://www.janzrzavy.cz/aktuality/vernisaz-vystavy-refresh-jan-zrzavy-2024/", img:IMG("IMG_2050_slider (1).jpg"), ex:"Ohlédnutí za vernisáží výstavy REFRESH 2024."},
+  {t:"REFRESH Jan Zrzavý | 2024", d:"2024-05-04", dt:"4. května 2024", u:"https://www.janzrzavy.cz/aktuality/refresh-jan-zrzavy-2024/", img:IMG("P1080807_slider_top.jpg"), ex:"Pozvánka na 3. ročník soutěže."},
+
+  // 2023
+  {t:"Spory o Jana Žižku - Cena Kraje Vysočina na podzimním knižním veletrhu", d:"2023-10-20", dt:"20. října 2023", u:"https://www.janzrzavy.cz/aktuality/spory-o-jana-zizku-cena-kraje-vysocina/", img:IMG("chvilkyZrzavy.jpg"), ex:"Kniha oceněna na veletrhu v Havlíčkově Brodě."},
+  {t:"Vernisáž výstavy REFRESH Jan Zrzavý | 2023", d:"2023-09-07", dt:"7. září 2023", u:"https://www.janzrzavy.cz/aktuality/vernisaz-vystavy-refresh-jan-zrzavy-2023/", img:IMG("IMG_2050_slider (1).jpg"), ex:"Report z vernisáže soutěže REFRESH 2023."},
+  {t:"REFRESH Jan Zrzavý | 2023", d:"2023-05-06", dt:"6. května 2023", u:"https://www.janzrzavy.cz/aktuality/refresh-jan-zrzavy-2023/", img:IMG("P1080807_slider_top.jpg"), ex:"Pozvánka na 2. ročník soutěže."},
+  {t:"Odešel Jaroslav Šoupal", d:"2023-03-28", dt:"28. března 2023", u:"https://www.janzrzavy.cz/aktuality/odesel-jaroslav-soupal/", img:IMG("IMG_2041.jpg"), ex:"Vzpomínka na předsedu spolku."},
+
+  // 2022
+  {t:"Jeníkova špacírka", d:"2022-10-12", dt:"12. října 2022", u:"https://www.janzrzavy.cz/aktuality/jenikova-spacirka-2022/", img:IMG("jenikova-spacirka-382.jpg"), ex:"Ohlédnutí za 13. ročníkem."},
+  {t:"Vernisáž výstavy REFRESH Jan Zrzavý | 2022", d:"2022-09-03", dt:"3. září 2022", u:"https://www.janzrzavy.cz/aktuality/vernisaz-vystavy-refresh-jan-zrzavy-2022/", img:IMG("IMG_2050_slider (1).jpg"), ex:"Vernisáž studentské soutěže."},
+  {t:"Friends of the Czech heritage - výroční setkání v Ledeburských zahradách", d:"2022-07-12", dt:"12. července 2022", u:"https://www.janzrzavy.cz/aktuality/friends-of-the-czech-heritage-vyrocni-setkani/", img:IMG("P1080807_slider_top.jpg"), ex:"Poděkování za podporu."},
+  {t:"REFRESH Jan Zrzavý", d:"2022-06-02", dt:"2. června 2022", u:"https://www.janzrzavy.cz/aktuality/refresh-jan-zrzavy/", img:IMG("IMG_2050_slider (1).jpg"), ex:"1. ročník soutěže – pozvánka."},
+  {t:"Lipnická bible v Chotěboři", d:"2022-04-21", dt:"21. dubna 2022", u:"https://www.janzrzavy.cz/aktuality/lipnicka-bible-v-chotebori/", img:IMG("lipnicka bible.jpg"), ex:"Zapůjčená digitální podoba rukopisu."},
+  {t:"Magnesia litera 2022: Zvítězili jsme v kategorii za nakladatelský počin", d:"2022-04-10", dt:"10. dubna 2022", u:"https://www.janzrzavy.cz/aktuality/magnesia-litera-2022-zvitezili-jsme/", img:IMG("lipnicka bible.jpg"), ex:"Ocenění pro publikaci Lipnická bible."},
+  {t:"Navštívili jsme Galerii Krause v Pfäffikonu (Švýcarsko)", d:"2022-04-10", dt:"10. dubna 2022", u:"https://www.janzrzavy.cz/aktuality/navstivili-jsme-galerii-krause/", img:IMG("IMG_6468_web.jpg"), ex:"Report z návštěvy galerie."},
+  {t:"Nově nalezené foto - světový unikát", d:"2022-04-01", dt:"1. dubna 2022", u:"https://www.janzrzavy.cz/aktuality/nove-nalezene-foto-svetovy-unikat/", img:IMG("IMG_6467_web.jpg"), ex:"Aprílové odlehčení."},
+  {t:"Lipnická bible - nominace na cenu Magnesia litera 2022", d:"2022-03-15", dt:"15. března 2022", u:"https://www.janzrzavy.cz/aktuality/lipnicka-bible-nominace-magnesia-litera-2022/", img:IMG("lipnicka bible.jpg"), ex:"Zpráva o nominaci."},
+  {t:"Končí výstava v Knihovně Vysočiny v Havlíčkově Brodě", d:"2022-03-06", dt:"6. března 2022", u:"https://www.janzrzavy.cz/aktuality/konci-vystava-v-knihovne-vysociny/", img:IMG("IMG_6468_web.jpg"), ex:"Ohlédnutí za výstavou."},
+  {t:"Jan Zrzavý a francouzská Bretaň", d:"2022-02-27", dt:"27. února 2022", u:"https://www.janzrzavy.cz/aktuality/jan-zrzavy-a-francouzska-bretan/", img:IMG("camaretpaysage2.jpg"), ex:"Tip na reportáž ČT."},
+  {t:"Zemřel Jiří Milichovský", d:"2022-01-14", dt:"14. ledna 2022", u:"https://www.janzrzavy.cz/aktuality/zemrel-jiri-milichovsky/", img:IMG("IMG_2041.jpg"), ex:"Vzpomínka."},
+
+  // 2021
+  {t:"Adventní Zrzavý Na skalce", d:"2021-12-17", dt:"17. prosince 2021", u:"https://www.janzrzavy.cz/aktuality/adventni-zrzavy-na-skalce/", img:IMG("IMG_6468_web.jpg"), ex:"Pozvánka do ateliéru."},
+  {t:"Jeníkova špacírka 2021", d:"2021-10-05", dt:"5. října 2021", u:"https://www.janzrzavy.cz/aktuality/jenikova-spacirka-2021/", img:IMG("jenikova-spacirka-382.jpg"), ex:"Ohlédnutí za 12. ročníkem."},
+  {t:"Lipnická bible v Klementinu", d:"2021-09-06", dt:"6. září 2021", u:"https://www.janzrzavy.cz/aktuality/lipnicka-bible-v-klementinu/", img:IMG("lipnicka bible.jpg"), ex:"Vernisáž v Zrcadlové kapli."},
+  {t:"Lipnické léto s lipnickou biblí", d:"2021-06-27", dt:"27. června 2021", u:"https://www.janzrzavy.cz/aktuality/lipnicke-leto-s-lipnickou-bibli/", img:IMG("lipnicka bible.jpg"), ex:"Letní výstava na Lipnici."},
+
+  // 2020
+  {t:"Vánoční noviny 2020", d:"2020-12-24", dt:"24. prosince 2020", u:"https://www.janzrzavy.cz/aktuality/vanocni-noviny-2020/", img:IMG("IMG_6467_web.jpg"), ex:"Souhrn dění roku 2020."},
+  {t:"Jiří Peňás: Zarezlý střed v Okrouhlici", d:"2020-09-20", dt:"20. září 2020", u:"https://www.janzrzavy.cz/aktuality/jiri-penas-zarezly-stred-v-okrouhlici/", img:IMG("Okrouhlice.jpg"), ex:"Text Jiřího Peňáse."},
+  {t:"Tisková zpráva: Jan Zrzavý – malíř domova bez domova", d:"2020-08-14", dt:"14. srpna 2020", u:"https://www.janzrzavy.cz/aktuality/tiskova-zprava-jan-zrzavy-malir-domova-bez-domova/", img:IMG("IMG_2050_slider (1).jpg"), ex:"Prohlášení spolku."},
+  {t:"Jdeme online", d:"2020-07-29", dt:"29. července 2020", u:"https://www.janzrzavy.cz/aktuality/jdeme-online/", img:IMG("P1080807_slider_top.jpg"), ex:"Spuštění webu."},
+  {t:"Z výroční členské schůze", d:"2020-07-20", dt:"20. července 2020", u:"https://www.janzrzavy.cz/aktuality/z-vyrocni-clenske-schuze-2020/", img:IMG("IMG_6468_web.jpg"), ex:"Shrnutí jednání."},
+  {t:"Dopis zastupitelům Obce Okrouhlice", d:"2020-07-09", dt:"9. července 2020", u:"https://www.janzrzavy.cz/aktuality/dopis-zastupitelum-obce-okrouhlice/", img:IMG("Okrouhlice.jpg"), ex:"Žádost o vyjádření."},
+  {t:"Zemřel Stanislav Michek", d:"2020-06-30", dt:"30. června 2020", u:"https://www.janzrzavy.cz/aktuality/zemrel-stanislav-michek/", img:IMG("IMG_2041.jpg"), ex:"Vzpomínka."},
+  {t:"Ohlédnutí za rokem 2019", d:"2020-01-04", dt:"4. ledna 2020", u:"https://www.janzrzavy.cz/aktuality/ohlednuti-za-rokem-2019/", img:IMG("Okrouhlice.jpg"), ex:"Souhrn roku 2019."},
+
+  // 2019
+  {t:"10. jubilejní špacírka představuje svoje trasy", d:"2019-09-20", dt:"20. září 2019", u:"https://www.janzrzavy.cz/aktuality/10-jubilejni-spacirka-predstavuje-svoje-trasy/", img:IMG("jenikova-spacirka-382.jpg"), ex:"Pozvánka a trasy."},
+  {t:"2009-2019", d:"2019-07-02", dt:"2. července 2019", u:"https://www.janzrzavy.cz/aktuality/2009-2019/", img:IMG("IMG_6467_web.jpg"), ex:"Milník 10 let spolku."},
+  {t:"Století republiky v Okrouhlici", d:"2018-11-02", dt:"2. listopadu 2018", u:"https://www.janzrzavy.cz/aktuality/stoleti-republiky-v-okrouhlici/", img:IMG("Okrouhlice.jpg"), ex:"Oslavy 100 let."},
+
+  // 2018
+  {t:"Kozí ulice", d:"2018-07-23", dt:"23. července 2018", u:"https://www.janzrzavy.cz/aktuality/kozi-ulice/", img:IMG("IMG_2050_slider (1).jpg"), ex:"Cedulka pro nejstarší ulici."},
+  {t:"9.Jeníkova špacírka", d:"2018-07-20", dt:"20. července 2018", u:"https://www.janzrzavy.cz/aktuality/9-jenikova-spacirka/", img:IMG("jenikova-spacirka-382.jpg"), ex:"Pozvánka."},
+  {t:"2018 - rok zlomu?", d:"2018-05-29", dt:"29. května 2018", u:"https://www.janzrzavy.cz/aktuality/2018-rok-zlomu/", img:IMG("IMG_6468_web.jpg"), ex:"Komentář k dění 2017–2018."},
+
+  // 2017
+  {t:"6. Jeníkova černá hodinka", d:"2017-12-12", dt:"12. prosince 2017", u:"https://www.janzrzavy.cz/aktuality/6-jenikova-cerna-hodinka/", img:IMG("IMG_2050_slider (1).jpg"), ex:"Pozvánka/ohlédnutí."},
+  {t:"Krásné Vánoce a šťastný nový rok", d:"2017-12-12", dt:"12. prosince 2017", u:"https://www.janzrzavy.cz/aktuality/krasne-vanoce-a-stastny-novy-rok-2018/", img:IMG("IMG_6467_web.jpg"), ex:"PF."},
+  {t:"8.Jeníkova špacírka", d:"2017-09-14", dt:"14. září 2017", u:"https://www.janzrzavy.cz/aktuality/8-jenikova-spacirka/", img:IMG("jenikova-spacirka-382.jpg"), ex:"Pozvánka."},
+  {t:"Sto let", d:"2017-06-02", dt:"2. června 2017", u:"https://www.janzrzavy.cz/aktuality/sto-let/", img:IMG("P1080807_slider_top.jpg"), ex:"Reflexe výročí."},
+
+  // 2012
+  {t:"Budujeme stezku Krajem Jana Zrzavého.", d:"2012-04-17", dt:"17. dubna 2012", u:"https://www.janzrzavy.cz/aktuality/budujeme-stezku-krajem-jana-zrzaveho/", img:IMG("Okrouhlice.jpg"), ex:"Projekt naučné stezky."},
+
+  // 2011
+  {t:"Cesta do \"pravěku\" Okrouhlice", d:"2011-11-17", dt:"17. listopadu 2011", u:"https://www.janzrzavy.cz/aktuality/cesta-do-praveku-okrouhlice/", img:IMG("IMG_6468_web.jpg"), ex:"Soutěž pro žáky ZŠ."},
+  {t:"Jeníkova špacírka č. 2, 1. října 2011", d:"2011-10-16", dt:"16. října 2011", u:"https://www.janzrzavy.cz/aktuality/jenikova-spacirka-c-2/", img:IMG("jenikova-spacirka-382.jpg"), ex:"Report z druhého ročníku."},
+  {t:"Výtvarná dílna, ročník druhý", d:"2011-08-16", dt:"16. srpna 2011", u:"https://www.janzrzavy.cz/aktuality/vytvarna-dilna-rocnik-druhy/", img:IMG("P1080807_slider_top.jpg"), ex:"Letní dílna pro děti."},
+  {t:"Letní výtvarná dílna pro děti", d:"2011-05-30", dt:"30. května 2011", u:"https://www.janzrzavy.cz/aktuality/letni-vytvarna-dilna-pro-deti/", img:IMG("IMG_2050_slider (1).jpg"), ex:"Pozvánka."},
+  {t:"Historie špýcharu", d:"2011-05-24", dt:"24. května 2011", u:"https://www.janzrzavy.cz/aktuality/historie-spychara/", img:IMG("Okrouhlice.jpg"), ex:"Historické okénko."},
+  {t:"Jeníkova špacírka 2011", d:"2011-05-15", dt:"15. května 2011", u:"https://www.janzrzavy.cz/aktuality/jenikova-spacirka-2011/", img:IMG("jenikova-spacirka-382.jpg"), ex:"Pozvánka."},
+  {t:"Okrouhlice bude mít poznávací stezku!", d:"2011-05-02", dt:"2. května 2011", u:"https://www.janzrzavy.cz/aktuality/okrouhlice-bude-mit-poznávací-stezku/", img:IMG("Okrouhlice.jpg"), ex:"Dotace ROP Jihovýchod."},
+  {t:"Za malířem do Benátek", d:"2011-04-29", dt:"29. dubna 2011", u:"https://www.janzrzavy.cz/aktuality/za-malirem-do-benatek/", img:IMG("camaretquai2.jpg"), ex:"O velikonoční cestě do Benátek."},
+  {t:"Úprava areálu školy pokračuje", d:"2011-04-10", dt:"10. dubna 2011", u:"https://www.janzrzavy.cz/aktuality/uprava-arealu-skoly-pokracuje/", img:IMG("IMG_6467_web.jpg"), ex:"Rekonstrukční práce."},
+  {t:"Žhavá novinka", d:"2011-04-01", dt:"1. dubna 2011", u:"https://www.janzrzavy.cz/aktuality/zhava-novinka/", img:IMG("IMG_6468_web.jpg"), ex:"Aprílová glosa."},
+  {t:"Chvilky s Janem Zrzavým", d:"2011-03-15", dt:"15. března 2011", u:"https://www.janzrzavy.cz/aktuality/chvilky-s-janem-zrzavym/", img:IMG("chvilkyZrzavy.jpg"), ex:"Vydání vzpomínkových črt."},
+
+  // 2010
+  {t:"Jan Zrzavý. Kouzelník, který uměl namalovat duši", d:"2010-11-16", dt:"16. listopadu 2010", u:"https://www.janzrzavy.cz/aktuality/jan-zrzavy-kouzelnik-ktery-umel-namalovat-dusi-2/", img:IMG("IMG_6468_web.jpg"), ex:"Výročí 120 let od narození."},
+  {t:"Na Knižním veletrhu", d:"2010-11-16", dt:"16. listopadu 2010", u:"https://www.janzrzavy.cz/aktuality/na-kniznim-veletrhu/", img:IMG("IMG_2050_slider (1).jpg"), ex:"Účast na veletrhu."},
+  {t:"Kouzelník, který uměl namalovat duši", d:"2010-11-06", dt:"6. listopadu 2010", u:"https://www.janzrzavy.cz/aktuality/kouzelnik-ktery-umel-namalovat-dusi/", img:IMG("P1080807_slider_top.jpg"), ex:"Pásmo v sokolovně."},
+  {t:"Jeníkova špacírka", d:"2010-10-06", dt:"6. října 2010", u:"https://www.janzrzavy.cz/aktuality/jenikova-spacirka-2010/", img:IMG("jenikova-spacirka-382.jpg"), ex:"Report 2010."},
+  {t:"Bohuslav Martinů na návštěvě u Jana Zrzavého", d:"2010-08-16", dt:"16. srpna 2010", u:"https://www.janzrzavy.cz/aktuality/bohuslav-martinu-na-navsteve-u-jana-zrzaveho/", img:IMG("IMG_6467_web.jpg"), ex:"Výstava na škole."},
+  {t:"Výtvarná dílna pro děti", d:"2010-08-16", dt:"16. srpna 2010", u:"https://www.janzrzavy.cz/aktuality/vytvarna-dilna-pro-deti-2010/", img:IMG("IMG_6468_web.jpg"), ex:"Dílna v okrouhlické škole."},
+  {t:"Špacírka Jana Zrzavého", d:"2010-06-30", dt:"30. června 2010", u:"https://www.janzrzavy.cz/aktuality/spacirka-jana-zrzaveho/", img:IMG("jenikova-spacirka-382.jpg"), ex:"Pozvánka."},
+  {t:"Kulturní aktivity v létě", d:"2010-06-25", dt:"25. června 2010", u:"https://www.janzrzavy.cz/aktuality/kulturni-aktivity-v-lete/", img:IMG("P1080807_slider_top.jpg"), ex:"Zážitkové dílny."},
+  {t:"Dešťová voda už nepodmáčí školu", d:"2010-05-25", dt:"25. května 2010", u:"https://www.janzrzavy.cz/aktuality/destova-voda-uz-nepodmaci-skolu/", img:IMG("Okrouhlice.jpg"), ex:"Kanalizace u školy."},
+  {t:"Uprostřed jara", d:"2010-04-16", dt:"16. dubna 2010", u:"https://www.janzrzavy.cz/aktuality/uprostred-jara/", img:IMG("IMG_2050_slider (1).jpg"), ex:"Pozdrav jara."},
+  {t:"Zrzavý Martinů", d:"2010-04-15", dt:"15. dubna 2010", u:"https://www.janzrzavy.cz/aktuality/zrzavy-martinu/", img:IMG("IMG_6467_web.jpg"), ex:"Výstava o přátelství autorů."},
+
+  // 2009
+  {t:"PF 2010", d:"2009-12-31", dt:"31. prosince 2009", u:"https://www.janzrzavy.cz/aktuality/pf-2010/", img:IMG("IMG_6468_web.jpg"), ex:"Novoroční přání."},
+  {t:"Osvětlení rodného domu Jana Zrzavého", d:"2009-11-05", dt:"5. listopadu 2009", u:"https://www.janzrzavy.cz/aktuality/osvetleni-rodneho-domu-jana-zrzaveho/", img:IMG("Okrouhlice.jpg"), ex:"Slavnostní nasvícení fasády."},
+  {t:"Návštěva představitelů Nadace Jana Evangelisty Purkyně", d:"2009-10-06", dt:"6. října 2009", u:"https://www.janzrzavy.cz/aktuality/navsteva-predstavitelu-nadace-j-e-purkyne/", img:IMG("P1080807_slider_top.jpg"), ex:"Zpráva o návštěvě."},
+  {t:"Instalace tabule před rodným domem", d:"2009-09-15", dt:"15. září 2009", u:"https://www.janzrzavy.cz/aktuality/instalace-tabule-pred-rodnym-domem/", img:IMG("Okrouhlice.jpg"), ex:"Info tabule u školy."}
 ];
+
 
 /** --- Render + stránkování --- */
 const GRID = document.getElementById('postsGrid');
 const PAGER = document.getElementById('pager');
 const YEAR = document.getElementById('yearFilter');
 const PER_PAGE = 9;
+
 
 function renderYears(){
   const years = Array.from(new Set(POSTS.map(p=>new Date(p.d).getFullYear()))).sort((a,b)=>b-a);
