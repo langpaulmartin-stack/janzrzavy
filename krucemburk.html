@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <title>Krucemburk | Jan Zrzavý</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Krucemburk – město na Vysočině spojené s rodem Zrzavých a krajinou, která inspirovala Jana Zrzavého." />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <meta property="og:title" content="Krucemburk | Jan Zrzavý">
+  <meta property="og:description" content="Krucemburk – město na Vysočině spojené s rodem Zrzavých a krajinou, která inspirovala Jana Zrzavého.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="favicon-512.png">
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <div class="nav__brand">
+      <a href="index.html" class="nav__logo">
+        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/janzrzavy/main/Logo%20Spolku%20Za%20Z%C3%A1chranu%20Rodn%C3%A9ho%20Domu.png" alt="Logo Jan Zrzavý">
+      </a>
+      <a href="index.html" class="nav__orgname">Spolek Za záchranu rodného domu Jana Zrzavého</a>
+    </div>
+
+    <nav class="nav__links" aria-label="Hlavní navigace">
+      <div class="menu-item has-dropdown">
+        <button class="menu-trigger" aria-haspopup="true" aria-expanded="false">
+          Jan Zrzavý
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="dropdown">
+          <a href="jan-zrzavy.html">Profil</a>
+          <a href="jan-zrzavy.html">Vzpomínky</a>
+        </div>
+      </div>
+
+      <div class="menu-item has-dropdown">
+        <button class="menu-trigger" aria-haspopup="true" aria-expanded="false">
+          Místa
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="dropdown">
+          <a href="okrouhlice.html">Okrouhlice</a>
+          <a href="krucemburk.html" aria-current="page">Krucemburk</a>
+          <a href="camaret.html">Camaret sur Mer</a>
+        </div>
+      </div>
+
+      <a href="aktuality.html">Aktuality</a>
+      <a href="o-spolku.html#o-spolku">Cíle spolku</a>
+      <a href="aktivity.html">Aktivity</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Otevřít menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+    </button>
+  </div>
+
+  <nav class="nav__panel" id="mobileMenu" aria-label="Mobilní navigace" hidden>
+    <details class="mobile-group">
+      <summary>Jan Zrzavý</summary>
+      <a href="jan-zrzavy.html">Profil</a>
+      <a href="jan-zrzavy.html">Vzpomínky</a>
+    </details>
+    <details class="mobile-group">
+      <summary>Místa</summary>
+      <a href="okrouhlice.html">Okrouhlice</a>
+      <a href="krucemburk.html" aria-current="page">Krucemburk</a>
+      <a href="camaret.html">Camaret-sur-Mer</a>
+    </details>
+    <a href="aktuality.html">Aktuality</a>
+    <a href="o-spolku.html#o-spolku">Cíle spolku</a>
+    <a href="aktivity.html">Aktivity</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<main id="main">
+  <!-- Hero -->
+  <section class="section section--image"
+    style="--bg-url: url('https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_2050_slider%20(1).jpg');">
+    <div class="container">
+      <div class="kicker">Místo</div>
+      <h1>Krucemburk</h1>
+      <p class="mt-2">Město na Vysočině – rodové kořeny Zrzavých a krajina, do které se stojí za to vracet.</p>
+      <div class="mt-3">
+        <a class="btn btn--outline" href="#o-meste">O městě</a>
+        <a class="btn btn--outline" href="#souvislosti">Souvislosti</a>
+        <a class="btn btn--outline" href="#tipy">Tipy na návštěvu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- O městě -->
+  <section id="o-meste" class="section">
+    <div class="container">
+      <div class="kicker">O městě</div>
+      <h2>Krátce z historie</h2>
+      <p class="mt-2">
+        Krucemburk leží na pomezí Čech a Moravy v krajině Českomoravské vrchoviny. Rod Zrzavých je zde doložen již od 17. století;
+        právě odtud pocházel Janův otec Hanuš. Okolní krajina a místní sídla tvoří přirozené zázemí regionu, kde Zrzavý často pobýval.
+      </p>
+    </div>
+  </section>
+
+  <!-- Souvislosti -->
+<!-- Jan Zrzavý a Krucemburk -->
+<section class="section">
+  <div class="container">
+    <div class="kicker">Osobnost & místo</div>
+    <h2>Jan Zrzavý a Krucemburk</h2>
+
+    <h3 class="mt-2">Rodiště a „pravý domov“</h3>
+    <p class="mt-1">
+      5. listopadu 1890 se Jan Zrzavý narodil v okrouhlické škole, kde byl jeho otec řídícím. O pozemek školy se dlouho soudily obce Okrouhlice a Vadín, proto bývá jako rodiště někdy uváděn i Vadín. A přesto: „Narodil jsem se v Okrouhlici, ale za svoje pravé rodiště pokládám Krucemburk…“ – místo, které si malíř zamiloval a kde si přál být pochován. Jeho prostý hrob najdete u katolického kostela na návrší nad náměstím.
+    </p>
+
+    <h3 class="mt-3">Prázdniny u dědečka</h3>
+    <p class="mt-1">
+      V Okrouhlici byl „synkem řídících“, v Krucemburku jedním z dětí s volností her a fantazie. „Krucemburk byl eldorádo, ráj mých dětských let,“ vzpomíná. Dědeček – „Krásný Jan“ – byl hospodským a sedlákem, měl zájezdní hospodu Na špici; babička přišla z Čáslavi z bohatého statku.
+    </p>
+
+    <h3 class="mt-3">Jméno „Zerzavý“</h3>
+    <p class="mt-1">
+      V rodinných vzpomínkách se objevuje i podoba příjmení „Zerzavý“. Malíř našel na půdě evangelium s razítkem „Jan Zerzavý z Krucemburku“. Kdy se zápis změnil, není jisté.
+    </p>
+
+    <h3 class="mt-3">Krucemburk v obrazech</h3>
+    <p class="mt-1">
+      Zrzavého obrazy Krucemburku (1939, 1959) nepředkládají doslovnou realitu, ale svátečnost a „dech boží“ vnímaný umělcem. „Neobkresluji milované věci, ale pohlcuji je a strávím, aby se zrodily z mého nitra věci nové…“
+    </p>
+
+    <h3 class="mt-3">Dětství, zdraví a cesta k umění</h3>
+    <p class="mt-1">
+      Byl šestý z devíti dětí. Školní léta provázely nezdary a spory s otcem; v 17 letech mu diagnostikovali vážnou chorobu. Právě tehdy se otevřela cesta k umění. Klíčový byl i sen z roku 1911 o „zásilce zářivých barev“ od Leonarda da Vinciho.
+    </p>
+
+    <h3 class="mt-3">Osobnost a postoje</h3>
+    <p class="mt-1">
+      Zrzavý byl přímý, nenapodobitelný a „svůj“. Když nemohl sladit umělecké přesvědčení s požadavkem „socialistického realismu“, rezignoval na profesuru v Olomouci. „Ničím se nedat vázat a všeho se odvážit.“
+    </p>
+
+    <h3 class="mt-3">Krajina Vysočiny</h3>
+    <p class="mt-1">
+      K rodné krajině dospěl přes obavy z dětství. Jeho vysočinské motivy (Krucemburk, Žďár, Kácov, Vadín…) jsou krajiny bez lidí – „kde slyšel míjet čas“. Duchovnost malby jim dává vyšší smysl.
+    </p>
+
+    <h3 class="mt-3">Francie a návraty</h3>
+    <p class="mt-1">
+      Měl rád Francii a Itálii – „světlo, barvy, moře“ – ale zůstal věrný vlasti. „Miluji svou vlast… myšlenka, že bych ji musel opustit navždy, je mi nesnesitelná.“
+    </p>
+
+    <h3 class="mt-3">Hrob, tradice a rod</h3>
+    <p class="mt-1">
+      Hrob Jana Zrzavého je u kostela v Krucemburku. Rodinné tradice žijí i v místním jazyku – „u Špických“ – podle někdejší hospody Na špici. Příbuzní vzpomínají na malířovu přímost, pořádek, hudbu i „roztržitost s klíči“.
+    </p>
+
+    <h3 class="mt-3">Paměť místa a Pamětní síň</h3>
+    <p class="mt-1">
+      Společnost Jana Zrzavého (SJZ) v Krucemburku otevřela v červnu 2002 Pamětní síň Jana Zrzavého na spodním okraji náměstí. Kromě retrospektivy se věnuje průběžným výstavám současných umělců.
+    </p>
+
+    <h3 class="mt-3">Odkaz a lyrismus</h3>
+    <p class="mt-1">
+      Zrzavého dílo se označuje jako „lyrismus“ 20. století – hodnota, kterou potřebujeme i dnes. Jaroslav Seifert mu psal o „svátečnosti světa“ v jeho umění; sám Zrzavý chtěl „vnést krásu do otrávených srdcí“.
+    </p>
+
+    <p class="mt-3">
+      <a class="btn btn--ghost" href="https://www.sjz.cz/pametni-sin/jan-zrzavy-a-krucemburk/" target="_blank" rel="noopener">Více zde – SJZ Krucemburk</a>
+    </p>
+  </div>
+</section>
+
+
+  <!-- Tipy -->
+  <section id="tipy" class="section">
+    <div class="container">
+      <div class="kicker">Tipy</div>
+      <h2>Co navštívit</h2>
+      <div class="grid grid--3 mt-3">
+        <article class="card card--year">
+          <figure class="card__media">
+            <img src="https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_2041.jpg" alt="Centrum Krucemburku">
+          </figure>
+          <div class="card__body">
+            <h3 class="h5">Centrum města</h3>
+            <p>Historické jádro se sakrálními památkami a drobnou architekturou.</p>
+          </div>
+        </article>
+
+        <article class="card card--year">
+          <figure class="card__media">
+            <img src="https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_1411.jpeg" alt="Krajina Českomoravské vrchoviny u Krucemburku">
+          </figure>
+          <div class="card__body">
+            <h3 class="h5">Okolní krajina</h3>
+            <p>Louky, lesy a vyhlídky – klidné trasy pro pěší i cyklisty.</p>
+          </div>
+        </article>
+
+        <article class="card card--year">
+          <figure class="card__media">
+            <img src="https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_6467_web.jpg" alt="Přírodní scenérie v okolí">
+          </figure>
+          <div class="card__body">
+            <h3 class="h5">Vysočina na dosah</h3>
+            <p>Fotogenická místa, která stojí za krátkou odbočku.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="section-cta">
+        <a class="btn btn--outline" href="index.html">← Zpět na homepage</a>
+        <a class="btn btn--outline" href="aktuality.html">Aktuality</a>
+        <a class="btn btn--outline" href="o-spolku.html#o-spolku">O spolku</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="kontakt" class="footer">
+  <div class="container footer__cols">
+    <div>
+      <strong>Za záchranu rodného domu Jana Zrzavého, z.s.</strong><br>
+      582 31 Okrouhlice 62<br>
+      IČ: 22725181
+    </div>
+    <div>
+      <div><strong>Účet spolku</strong></div>
+      <div>Č.ú.: 3807356001/5500</div>
+      <div>IBAN: CZ8355000000003807356001</div>
+      <div>SWIFT: RZBCCZPP</div>
+    </div>
+    <div>
+      <div><strong>Odkazy</strong></div>
+      <div class="mt-2">© <span id="year"></span> Martin Langpaul</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const btn = document.getElementById('navToggle');
+  const panel = document.getElementById('mobileMenu');
+  if(!btn||!panel) return;
+  function openMenu(){ panel.hidden=false; panel.classList.add('open'); btn.setAttribute('aria-expanded','true'); btn.setAttribute('aria-label','Zavřít menu'); }
+  function closeMenu(){ panel.classList.remove('open'); btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Otevřít menu'); panel.hidden=true; }
+  function toggleMenu(){ (btn.getAttribute('aria-expanded')==='true') ? closeMenu() : openMenu(); }
+  btn.addEventListener('click', toggleMenu);
+  panel.addEventListener('click', e => { if(e.target.tagName==='A') closeMenu(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeMenu(); });
+  window.addEventListener('resize', ()=>{ if(window.innerWidth>900) closeMenu(); });
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.has-dropdown').forEach(dd=>{
+    const btn = dd.querySelector('.menu-trigger');
+    const menu = dd.querySelector('.dropdown');
+    const open = ()=>{ dd.classList.add('open'); btn.setAttribute('aria-expanded','true'); };
+    const close = ()=>{ dd.classList.remove('open'); btn.setAttribute('aria-expanded','false'); };
+    const toggle = ()=>{ dd.classList.contains('open') ? close() : open(); };
+    btn?.addEventListener('click', e=>{ e.preventDefault(); toggle(); });
+    document.addEventListener('click', e=>{ if(!dd.contains(e.target)) close(); });
+    dd.addEventListener('keydown', e=>{
+      const items = Array.from(menu.querySelectorAll('a'));
+      const idx = items.indexOf(document.activeElement);
+      if(e.key==='Escape'){ close(); btn.focus(); }
+      if(e.key==='ArrowDown'){ e.preventDefault(); open(); (items[idx+1]||items[0]).focus(); }
+      if(e.key==='ArrowUp'){ e.preventDefault(); open(); (items[idx-1]||items[items.length-1]).focus(); }
+    });
+  });
+})();
+</script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
