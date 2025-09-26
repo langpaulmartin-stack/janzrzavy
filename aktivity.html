@@ -23,6 +23,17 @@
       color: var(--color-dark,#222);
       margin-right:.35rem;
     }
+
+    /* Filterbar – shodný vzhled jako na stránce Aktuality */
+  .filterbar{
+    display:flex; gap:.75rem; align-items:center; justify-content:flex-start;
+    margin:.5rem 0 1rem; flex-wrap:wrap;
+  }
+  .filterbar label{ font-weight:600; }
+  .filterbar select{
+    padding:.45rem .6rem; border:1px solid var(--border,#ddd);
+    border-radius:.5rem; background:#fff;
+  }
   </style>
   
 </head>
@@ -124,13 +135,13 @@
       <div class="kicker">Kalendář</div>
       <h2>Uplynulé události</h2>
 
-      <!-- Filtr roku -->
-      <div class="filterbar mt-2" aria-label="Filtr uplynulých">
-        <label for="pastYearFilter">Rok:</label>
-        <select id="pastYearFilter">
-          <option value="">Vše</option>
-        </select>
-      </div>
+<!-- Filtr roku – stejný markup jako na Aktualitách -->
+<div class="filterbar" aria-label="Filtr uplynulých událostí">
+  <label for="pastYearFilter">Rok:</label>
+  <select id="pastYearFilter">
+    <option value="">Vše</option>
+  </select>
+</div>
 
       <div id="eventsPast" class="grid grid--3 mt-3"></div>
       <div id="pagerPast" class="mt-2"></div>
