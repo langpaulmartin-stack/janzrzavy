@@ -377,6 +377,20 @@ document.getElementById('year').textContent = new Date().getFullYear();
       return m ? m[0] : "";
     }
   
+    // Náhradní obrázky (RAW odkazy z tvého repa)
+const FALLBACK_IMAGES = [
+  "https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/JZ_rodny_dum.png",
+  "https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/jenikova-spacirka-382.jpg",
+  "https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_6467_web.jpg",
+  "https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_6468_web.jpg",
+  "https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/P1080807_slider_top.jpg",
+  "https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_2041.jpg"
+];
+
+function jzPickFallback(){
+  return FALLBACK_IMAGES[Math.floor(Math.random() * FALLBACK_IMAGES.length)];
+}
+
     /** === FETCH PŘES TVŮJ APPS SCRIPT PROXY === */
     async function jzGcalFetch(params){
       const base = "https://script.google.com/macros/s/AKfycbxAjZ7Hs4giREy-SohY0f9W5pToSkY_RwGW5KAL2TVZu-0J1-b0A8EPUve4CNT6dYHLGg/exec";
@@ -396,34 +410,44 @@ document.getElementById('year').textContent = new Date().getFullYear();
       const pastRaw     = await jzGcalFetch({ timeMin: jzToISO(pastFrom), timeMax: jzToISO(now), maxResults: 2500 });
   
       function mapItem(ev){
-        const startISO = jzParseStart(ev);
-        const endISO   = jzParseEnd(ev);
-        const allDay   = !!(ev?.start?.date) && !ev?.start?.dateTime;
-  
-        const descRaw  = ev.description || "";
-        const img      = jzExtractImage(descRaw) || "";
-  
-        // očisti popis: celé <img>, řádek "img:", markdown obrázky, obrázkové URL
-        let cleanDesc = descRaw
-          .replace(/<img\b[^>]*>/gi, "")
-          .replace(/^img:.*$/gmi, "")
-          .replace(/!\[[^\]]*\]\((https?:\/\/[^)]+)\)/gi, "")
-          .replace(/https?:\/\/\S+\.(?:png|jpe?g|webp|gif)(\?\S*)?/gi, "")
-          .trim();
-  
-        cleanDesc = jzEscape(cleanDesc);
-  
-        return {
-          id: ev.id || "",
-          t: (ev.summary && ev.summary.trim()) || "(Bez názvu)",
-          d: startISO,
-          end: endISO,
-          allDay,
-          place: ev.location || "",
-          ex: cleanDesc,
-          img
-        };
-      }
+  const startISO = jzParseStart(ev);
+  const endISO   = jzParseEnd(ev);
+  const allDay   = !!(ev?.start?.date) && !ev?.start?.dateTime;
+
+  const descRaw  = ev.description || "";
+const img      = jzExtractImage(descRaw) || jzPickFallback();
+
+  // 1) pryč IMG tagy (reálné i escapované) + markdown obrázky + řádky "img:"
+  // 2) pryč VEŠKERÉ http/https odkazy (ať nezůstane žádná URL)
+  // 3) pryč zbytky atributů a úklid whitespace
+  let cleanDesc = descRaw
+    .replace(/<img[\s\S]*?>/gi, "")                      // <img ...>
+    .replace(/&lt;img[\s\S]*?&gt;/gi, "")                // &lt;img ...&gt; (escapované)
+    .replace(/^img:.*$/gmi, "")                          // řádky "img: …"
+    .replace(/!\[[^\]]*?\]\((https?:\/\/[^\s)]+)\)/gi, "") // Markdown obrázky
+    .replace(/https?:\/\/[^\s<>"')]+/gi, "")             // jakákoli URL (http/https)
+    .replace(/\b(src|alt|title|width|height)\s*=\s*(?:"[^"]*"|'[^']*'|&quot;[^&]*&quot;)/gi, "") // zbytky atributů
+    .replace(/[ \t]+\n/g, "\n")                          // ořez koncových mezer
+    .replace(/\n{3,}/g, "\n\n")                          // vícenásobné prázdné řádky
+    .trim();
+
+  // escape až po čistce
+  const jzEscape = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  cleanDesc = jzEscape(cleanDesc);
+
+  return {
+    id: ev.id || "",
+    t: (ev.summary && ev.summary.trim()) || "(Bez názvu)",
+    d: startISO,
+    end: endISO,
+    allDay,
+    place: ev.location || "",
+    ex: cleanDesc,
+    img
+  };
+}
+
+
   
       const upcoming = upcomingRaw.map(mapItem).filter(e => e.d).sort((a,b) => a.d.localeCompare(b.d));
       const past     = pastRaw.map(mapItem).filter(e => e.d).sort((a,b) => b.d.localeCompare(a.d));
