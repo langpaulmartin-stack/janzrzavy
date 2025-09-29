@@ -316,121 +316,217 @@ document.getElementById('year').textContent = new Date().getFullYear();
  *  - stránkování pomocí .btn .btn--outline
  *  - filtr roku u uplynulých
  *  ========================= */
-const EVENTS_DATA = [
-  // Budoucí
-  { t:"Jeníkova špacírka 2026", d:"2026-10-10T09:00", place:"Okrouhlice – start u školy", ex:"Trasy pro rodiny i nadšence, hudba, setkání.", img:"https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_6467_web.jpg", url:"https://www.janzrzavy.cz/aktuality/" },
-  { t:"REFRESH Jan Zrzavý 2026 – vernisáž", d:"2026-05-08T17:00", place:"Okrouhlice – Na skalce", ex:"Vernisáž studentské soutěže, hudba a hosté.", img:"https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_6468_web.jpg", url:"https://www.janzrzavy.cz/aktuality/" },
-  { t:"Letní koncert na zahradě", d:"2026-07-12T18:30", place:"Zahrada rodného domu", ex:"Komorní večer v kulisách zahrady.", img:"https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_2050_slider%20(1).jpg", url:"https://www.janzrzavy.cz/aktuality/" },
 
-  // Minulé
-  { t:"REFRESH Jan Zrzavý 2025", d:"2025-05-06T17:00", place:"Okrouhlice – Na skalce", ex:"4. ročník soutěže – výběr prací.", img:"https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_6468_web.jpg", url:"https://www.janzrzavy.cz/aktuality/refresh-jan-zrzavy-2025/" },
-  { t:"Jeníkova špacírka 2025", d:"2025-09-18T09:00", place:"Okrouhlice", ex:"16. ročník – tradiční setkání a trasy.", img:"https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/jenikova-spacirka-2018.png", url:"https://www.janzrzavy.cz/aktuality/pojdte-s-nami-na-16-jenikovu-spacirku/" },
-  { t:"Vernisáž REFRESH 2024", d:"2024-10-20T17:00", place:"Okrouhlice – Na skalce", ex:"Vernisáž s autory.", img:"https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/P1080807_slider_top.jpg", url:"https://www.janzrzavy.cz/aktuality/vernisaz-vystavy-refresh-jan-zrzavy-2024/" },
-  { t:"Jeníkova špacírka 2024", d:"2024-09-22T09:00", place:"Okrouhlice", ex:"Trasy a setkání přátel regionu.", img:"https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_2041.jpg", url:"https://www.janzrzavy.cz/aktuality/jenikova-spacirka-2022/" },
-  { t:"REFRESH Jan Zrzavý 2024", d:"2024-05-04T17:00", place:"Okrouhlice", ex:"3. ročník – soutěžní přehlídka.", img:"https://raw.githubusercontent.com/langpaulmartin-stack/JZ-images/main/IMG_6467_web.jpg", url:"https://www.janzrzavy.cz/aktuality/refresh-jan-zrzavy-2024/" }
-];
-
-const PER_PAGE_UPCOMING = 6;
-const PER_PAGE_PAST = 9;
-
-const GRID_UP = document.getElementById("eventsUpcoming");
-const GRID_PS = document.getElementById("eventsPast");
-const PAGER_UP = document.getElementById("pagerUpcoming");
-const PAGER_PS = document.getElementById("pagerPast");
-const FILTER_PS = document.getElementById("pastYearFilter");
-const TZ = "Europe/Prague";
-
-function isFuture(iso){ return new Date(iso) > new Date(); }
-function yearOf(iso){ return new Date(iso).getFullYear(); }
-function czDateParts(iso){
-  const d = new Date(iso);
-  const date = d.toLocaleDateString("cs-CZ", { timeZone: TZ, day:"numeric", month:"long", year:"numeric" });
-  const time = d.toLocaleTimeString("cs-CZ", { timeZone: TZ, hour:"2-digit", minute:"2-digit" });
-  return {date, time};
-}
-
-function splitEvents(){
-  const upcoming = EVENTS_DATA.filter(e => isFuture(e.d)).sort((a,b)=> a.d.localeCompare(b.d));
-  const past     = EVENTS_DATA.filter(e => !isFuture(e.d)).sort((a,b)=> b.d.localeCompare(a.d));
-  return {upcoming, past};
-}
-
-function cardHTML(e){
-  const {date, time} = czDateParts(e.d);
-  return `
-  <article class="card card--year event-card">
-        ${e.img ? `
-        <figure class="card__media">
-          <img src="${e.img}" alt="">
-        </figure>` : ``}
-        <div class="card__body">
-          <div class="card__meta">
-            <span class="event__date"><span class="label">Datum:</span>${date} • ${time}</span>
-            ${e.place ? `<span class="event__place"><span class="label">Místo:</span>${e.place}</span>` : ``}
-          </div>
-          <h3 class="h4">${e.t}</h3>
-          ${e.ex ? `<p class="event__desc">${e.ex}</p>` : ``}
-          ${e.url ? `<a class="btn btn--outline mt-2" href="${e.url}" target="_blank" rel="noopener">Detail akce</a>` : ``}
-        </div>
-      </article>
-  `;
-}
-
-function renderPager(container, pages, current, onGo){
-  container.innerHTML = "";
-  if(pages <= 1) return;
-  const mk = (label, page, disabled=false, active=false)=>{
-    const a = document.createElement("a");
-    a.href="#";
-    a.className = "btn btn--outline";
-    a.textContent = label;
-    if(disabled){ a.setAttribute("aria-disabled","true"); a.style.opacity=".6"; a.style.pointerEvents="none"; }
-    if(active){ a.classList.add("is-active"); }
-    a.addEventListener("click", e=>{ e.preventDefault(); onGo(page); });
-    return a;
-  };
-  container.appendChild(mk("Předchozí", current-1, current===1));
-  for(let i=1;i<=pages;i++) container.appendChild(mk(String(i), i, false, i===current));
-  container.appendChild(mk("Další", current+1, current===pages));
-}
-
-let state = { upPage:1, pastPage:1, pastYear:"" };
-
-function fillPastYears(past){
-  const years = Array.from(new Set(past.map(e=>yearOf(e.d)))).sort((a,b)=> b-a);
-  FILTER_PS.innerHTML = `<option value="">Vše</option>` + years.map(y=>`<option value="${y}">${y}</option>`).join("");
-}
-
-function renderAll(){
-  const {upcoming, past} = splitEvents();
-
-  // Plánované
-  const upPages = Math.max(1, Math.ceil(upcoming.length / PER_PAGE_UPCOMING));
-  state.upPage = Math.min(Math.max(1, state.upPage), upPages);
-  const upStart = (state.upPage-1)*PER_PAGE_UPCOMING;
-  const upSlice = upcoming.slice(upStart, upStart + PER_PAGE_UPCOMING);
-  GRID_UP.innerHTML = upSlice.map(cardHTML).join("") || `<p>Momentálně nemáme žádné plánované události.</p>`;
-  renderPager(PAGER_UP, upPages, state.upPage, p=>{ state.upPage = p; renderAll(); });
-
-  // Uplynulé + filtr roku
-  if(FILTER_PS && FILTER_PS.options.length <= 1){ fillPastYears(past); }
-  const pastFiltered = past.filter(e => state.pastYear ? String(yearOf(e.d)) === state.pastYear : true);
-  const psPages = Math.max(1, Math.ceil(pastFiltered.length / PER_PAGE_PAST));
-  state.pastPage = Math.min(Math.max(1, state.pastPage), psPages);
-  const psStart = (state.pastPage-1)*PER_PAGE_PAST;
-  const psSlice = pastFiltered.slice(psStart, psStart + PER_PAGE_PAST);
-  GRID_PS.innerHTML = psSlice.map(cardHTML).join("") || `<p>Zatím tu nejsou žádné uplynulé události.</p>`;
-  renderPager(PAGER_PS, psPages, state.pastPage, p=>{ state.pastPage = p; renderAll(); });
-}
-
-FILTER_PS?.addEventListener("change", ()=>{
-  state.pastYear = FILTER_PS.value;
-  state.pastPage = 1;
-  renderAll();
-});
-
-// Start
-renderAll();
 </script>
-</body>
-</html>
+
+<script>
+  (() => {
+    'use strict';
+  
+    /** === KONFIGURACE === */
+    const GCAL = {
+      CALENDAR_ID: "c72a49415b95bd0435ea639dc191d7de10e3f51e0b44cf77c6974d5c4b640b87@group.calendar.google.com",
+      API_KEY: "AIzaSyBD7RwNRuIGUgvnOmPVd13D2Pl9F9PiKvc",   // doplň svůj klíč z Google Cloud Console
+      TIMEZONE: "Europe/Prague",
+      PAST_MONTHS: 36
+    };
+  
+    /** === DOM REF === */
+    const GRID_UP = document.getElementById("eventsUpcoming");
+    const GRID_PS = document.getElementById("eventsPast");
+    const PAGER_UP = document.getElementById("pagerUpcoming");
+    const PAGER_PS = document.getElementById("pagerPast");
+    const FILTER_PS = document.getElementById("pastYearFilter");
+  
+    const PER_PAGE_UPCOMING = 6;
+    const PER_PAGE_PAST = 9;
+  
+    /** === HELPERS === */
+    function jzToISO(d){ return d.toISOString(); }
+    function jzAddMonths(d, months){ const x = new Date(d); x.setMonth(x.getMonth()+months); return x; }
+    function jzParseStart(ev){
+      const s = (ev && ev.start) ? (ev.start.dateTime || ev.start.date) : null;
+      return s ? (ev.start.dateTime ? s : (s + "T00:00:00")) : null;
+    }
+    function jzParseEnd(ev){
+      const s = (ev && ev.end) ? (ev.end.dateTime || ev.end.date) : null;
+      return s ? (ev.end.dateTime ? s : (s + "T00:00:00")) : null;
+    }
+    function jzIsFuture(iso){ return new Date(iso) > new Date(); }
+    function jzYearOf(iso){ return new Date(iso).getFullYear(); }
+    function jzDateParts(iso, allDay){
+      const d = new Date(iso);
+      const date = d.toLocaleDateString("cs-CZ", { timeZone: GCAL.TIMEZONE, day:"numeric", month:"long", year:"numeric" });
+      const time = allDay ? "" : d.toLocaleTimeString("cs-CZ", { timeZone: GCAL.TIMEZONE, hour:"2-digit", minute:"2-digit" });
+      return { date, time };
+    }
+    // Volitelné: 1. řádek "img: https://..."
+    function jzExtractImage(description){
+  if(!description) return "";
+  // 1) Preferuj samostatný řádek "img: URL"
+  const m1 = description.match(/^\s*img:\s*(\S+)\s*$/im);
+  if(m1) return m1[1].trim();
+  // 2) Fallback: první obrázkový URL kdekoliv v textu
+  const m2 = description.match(/https?:\/\/\S+\.(?:png|jpe?g|webp|gif)(\?\S*)?/i);
+  return m2 ? m2[0] : "";
+}
+
+
+  
+    /** === GOOGLE CALENDAR API === */
+    async function jzGcalFetch(params){
+      const base = "https://www.googleapis.com/calendar/v3/calendars/" +
+        encodeURIComponent(GCAL.CALENDAR_ID) + "/events";
+      const query = new URLSearchParams(Object.assign({
+        key: GCAL.API_KEY,
+        singleEvents: "true",
+        orderBy: "startTime",
+        timeZone: GCAL.TIMEZONE
+      }, params));
+      let items = [];
+      let pageToken = undefined;
+      do {
+        if(pageToken) query.set("pageToken", pageToken);
+        // no-store + cache buster = vždy čerstvá data
+        const res = await fetch(base + "?" + query.toString() + "&_=" + Date.now(), { cache: "no-store" });
+        if(!res.ok){ throw new Error("Google Calendar API error: " + res.status); }
+        const data = await res.json();
+        const pageItems = (data.items || []).filter(i => i.status !== "cancelled");
+        items = items.concat(pageItems);
+        pageToken = data.nextPageToken;
+      } while(pageToken);
+      return items;
+    }
+  
+    async function jzLoadEvents(){
+      const now = new Date();
+      const pastFrom = jzAddMonths(now, -GCAL.PAST_MONTHS);
+  
+      const upcomingRaw = await jzGcalFetch({ timeMin: jzToISO(now), maxResults: 2500 });
+      const pastRaw     = await jzGcalFetch({ timeMin: jzToISO(pastFrom), timeMax: jzToISO(now), maxResults: 2500 });
+  
+      function mapItem(ev){
+        const startISO = jzParseStart(ev);
+        const endISO   = jzParseEnd(ev);
+        const allDay   = !!(ev && ev.start && ev.start.date) && !(ev && ev.start && ev.start.dateTime);
+        const img      = jzExtractImage(ev.description || "");
+        const cleanDesc = (ev.description || "").replace(/^img:.*$/gmi,"").trim();
+  
+        return {
+          id: ev.id || "",
+          t: ev.summary || "(Bez názvu)",
+          d: startISO,
+          end: endISO,
+          allDay: allDay,
+          place: ev.location || "",
+          ex: cleanDesc,
+          img: img,
+          url: ev.htmlLink || ""
+        };
+      }
+  
+      const upcoming = upcomingRaw.map(mapItem).filter(e => e.d).sort((a,b) => a.d.localeCompare(b.d));
+      const past     = pastRaw.map(mapItem).filter(e => e.d).sort((a,b) => b.d.localeCompare(a.d));
+  
+      return { upcoming, past };
+    }
+  
+    /** === RENDER === */
+    function jzCardHTML(e){
+      const parts = jzDateParts(e.d, e.allDay);
+      return (
+        '<article class="card card--year event-card">' +
+          (e.img ? (
+            '<figure class="card__media">' +
+              '<img src="' + e.img + '" alt="">' +
+            '</figure>'
+          ) : '') +
+          '<div class="card__body">' +
+            '<div class="card__meta">' +
+              '<span class="event__date"><span class="label">Datum:</span>' + parts.date + (e.allDay ? '' : ' • ' + parts.time) + '</span>' +
+              (e.place ? '<span class="event__place"><span class="label">Místo:</span>' + e.place + '</span>' : '') +
+            '</div>' +
+            '<h3 class="h4">' + e.t + '</h3>' +
+            (e.ex ? '<p class="event__desc">' + e.ex + '</p>' : '') +
+          '</div>' +
+        '</article>'
+      );
+    }
+  
+    function jzRenderPager(container, pages, current, onGo){
+      if(!container){ return; }
+      container.innerHTML = "";
+      if(pages <= 1) return;
+      function mk(label, page, disabled, active){
+        const a = document.createElement("a");
+        a.href = "#";
+        a.className = "btn btn--outline";
+        a.textContent = label;
+        if(disabled){ a.setAttribute("aria-disabled","true"); a.style.opacity=".6"; a.style.pointerEvents="none"; }
+        if(active){ a.classList.add("is-active"); }
+        a.addEventListener("click", function(e){ e.preventDefault(); onGo(page); });
+        return a;
+      }
+      container.appendChild(mk("Předchozí", current-1, current===1, false));
+      for(var i=1;i<=pages;i++){ container.appendChild(mk(String(i), i, false, i===current)); }
+      container.appendChild(mk("Další", current+1, current===pages, false));
+    }
+  
+    var STATE = { upPage:1, pastPage:1, pastYear:"", DATA:{upcoming:[], past:[]} };
+  
+    function jzFillPastYears(past){
+      if(!FILTER_PS){ return; }
+      var years = Array.from(new Set(past.map(function(e){ return jzYearOf(e.d); }))).sort(function(a,b){ return b-a; });
+      FILTER_PS.innerHTML = '<option value="">Vše</option>' + years.map(function(y){ return '<option value="'+y+'">'+y+'</option>'; }).join("");
+    }
+  
+    function jzRenderAll(){
+      var data = STATE.DATA;
+      var upcoming = data.upcoming;
+      var past     = data.past;
+  
+      // Budoucí
+      var upPages = Math.max(1, Math.ceil(upcoming.length / PER_PAGE_UPCOMING));
+      STATE.upPage = Math.min(Math.max(1, STATE.upPage), upPages);
+      var upStart = (STATE.upPage-1) * PER_PAGE_UPCOMING;
+      var upSlice = upcoming.slice(upStart, upStart + PER_PAGE_UPCOMING);
+      if(GRID_UP){ GRID_UP.innerHTML = upSlice.map(jzCardHTML).join("") || '<p>Momentálně nemáme žádné plánované události.</p>'; }
+      jzRenderPager(PAGER_UP, upPages, STATE.upPage, function(p){ STATE.upPage = p; jzRenderAll(); });
+  
+      // Minulé + filtr
+      if(FILTER_PS && FILTER_PS.options.length <= 1){ jzFillPastYears(past); }
+      var pastFiltered = past.filter(function(e){ return STATE.pastYear ? String(jzYearOf(e.d)) === STATE.pastYear : true; });
+      var psPages = Math.max(1, Math.ceil(pastFiltered.length / PER_PAGE_PAST));
+      STATE.pastPage = Math.min(Math.max(1, STATE.pastPage), psPages);
+      var psStart = (STATE.pastPage-1) * PER_PAGE_PAST;
+      var psSlice = pastFiltered.slice(psStart, psStart + PER_PAGE_PAST);
+      if(GRID_PS){ GRID_PS.innerHTML = psSlice.map(jzCardHTML).join("") || '<p>Zatím tu nejsou žádné uplynulé události.</p>'; }
+      jzRenderPager(PAGER_PS, psPages, STATE.pastPage, function(p){ STATE.pastPage = p; jzRenderAll(); });
+    }
+  
+    if(FILTER_PS){
+      FILTER_PS.addEventListener("change", function(){
+        STATE.pastYear = FILTER_PS.value;
+        STATE.pastPage = 1;
+        jzRenderAll();
+      });
+    }
+  
+    /** === START === */
+    (async function init(){
+      try {
+        if(GRID_UP){ GRID_UP.innerHTML = '<p>Načítám události z kalendáře…</p>'; }
+        if(GRID_PS){ GRID_PS.innerHTML = ''; }
+        var data = await jzLoadEvents();
+        STATE.DATA = data;
+        jzRenderAll();
+      } catch (err) {
+        console.error(err);
+        if(GRID_UP){ GRID_UP.innerHTML = '<p>Nepodařilo se načíst události z Google Kalendáře.</p>'; }
+      }
+    })();
+  
+  })();
+  </script>
+ </body>
+</html>  
