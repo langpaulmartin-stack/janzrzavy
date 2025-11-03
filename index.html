@@ -100,7 +100,7 @@
         <a href="okrouhlice.html">Okrouhlice</a>
         <a href="krucemburk.html">Krucemburk</a>
         <a href="camaret.html">Camaret-sur-Mer</a>
-        <a href="/mista.html">Další…</a>
+        <a href="">Další…</a>
       </details>
     
       <a href="aktuality.html">Aktuality</a>
@@ -346,134 +346,131 @@
     </div>
   </footer>
 
-  <!-- Slider JS -->
-  <script>
-    (function(){
-      const root = document.getElementById('heroSlider');
-      if(!root) return;
-    
-      const track = root.querySelector('.slides');
-      const originals = Array.from(root.querySelectorAll('.slide'));
-      const btnPrev = root.querySelector('[data-action="prev"]');
-      const btnNext = root.querySelector('[data-action="next"]');
-      const dots = Array.from(root.querySelectorAll('.slider__dot'));
-    
-      const len = originals.length;
-      const DURATION = 5000;
-    
-      // --- Nekonečná smyčka: přidáme klony ---
-      const firstClone = originals[0].cloneNode(true);
-      const lastClone  = originals[len-1].cloneNode(true);
-      firstClone.classList.add('clone');
-      lastClone.classList.add('clone');
-      track.appendChild(firstClone);              // ... [1,2,3] + [1]
-      track.insertBefore(lastClone, originals[0]); // [3] + [1,2,3] + [1]
-    
-      let slidesAll = Array.from(track.children);
-    
-      // Start na PRVNÍM reálném slide (index 1 včetně klonu na začátku)
-      let i = 1;
-      let timer = null;
-      let playing = true;
-    
-      function setTransition(on){
-        track.style.transition = on ? 'transform .6s ease' : 'none';
-      }
-    
-      function updateDots(){
-        const realIndex = (i - 1 + len) % len; // mapujeme [1..len] -> [0..len-1]
-        dots.forEach((d, idx)=>{
-          const active = idx === realIndex;
-          d.setAttribute('aria-selected', active ? 'true' : 'false');
-          d.toggleAttribute('aria-current', active);
-        });
-      }
-    
-      function goTo(index, withAnim = true){
-        setTransition(withAnim);
-        i = index;
-        track.style.transform = `translateX(-${i * 100}%)`;
-        updateDots();
-      }
-    
-      function next(){
-        goTo(i + 1, true);
-      }
-      function prev(){
-        goTo(i - 1, true);
-      }
-    
-      // Po každém „dofrčení“ zkontrolujeme klony a skokem beze změny polohy vrátíme index
-      track.addEventListener('transitionend', ()=>{
-        const current = slidesAll[i];
-        if(!current) return;
-    
-        // Pokud jsme dojeli na klon prvního (na KONCI), okamžitě přepneme bez animace na reálný první
-        if(current.classList.contains('clone') && current === firstClone){
-          goTo(1, false); // stejné vizuální místo, jen opravíme index
-        }
-        // Pokud jsme sjeli dozadu na klon posledního (na ZAČÁTKU), přepneme bez animace na reálný poslední
-        if(current.classList.contains('clone') && current === lastClone){
-          goTo(len, false);
-        }
-      });
-    
-      function play(){
-        if(timer) clearInterval(timer);
-        timer = setInterval(next, DURATION); // vždy posouváme VLEVO (index roste)
-        playing = true;
-      }
-      function pause(){
-        if(timer) clearInterval(timer);
-        timer = false;
-        playing = false;
-      }
-    
-      // Init
-      // nastavení počáteční pozice (bez animace), pak spustíme
+ <!-- ✅ OPRAVENÝ HERO SLIDER SCRIPT -->
+<script>
+(function(){
+  const root = document.getElementById('heroSlider');
+  if(!root) return;
+
+  const track = root.querySelector('.slides');
+  const originals = Array.from(root.querySelectorAll('.slide'));
+  const btnPrev = root.querySelector('[data-action="prev"]');
+  const btnNext = root.querySelector('[data-action="next"]');
+  const dots = Array.from(root.querySelectorAll('.slider__dot'));
+
+  const len = originals.length;
+  const DURATION = 5000;
+
+  // --- Nekonečná smyčka: přidáme klony ---
+  const firstClone = originals[0].cloneNode(true);
+  const lastClone  = originals[len-1].cloneNode(true);
+  firstClone.classList.add('clone');
+  lastClone.classList.add('clone');
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, originals[0]);
+
+  let slidesAll = Array.from(track.children);
+  let i = 1;                // začínáme na 1 (první reálný slide)
+  let timer = null;
+  let playing = true;
+
+  function setTransition(on){
+    track.style.transition = on ? 'transform .6s ease' : 'none';
+  }
+
+  function updateDots(){
+    const realIndex = (i - 1 + len) % len;
+    dots.forEach((d, idx)=>{
+      const active = idx === realIndex;
+      d.setAttribute('aria-selected', active ? 'true' : 'false');
+      d.toggleAttribute('aria-current', active);
+    });
+  }
+
+  function goTo(index, withAnim = true){
+    setTransition(withAnim);
+    i = (index + slidesAll.length) % slidesAll.length; // ✅ modulo ochrana
+    track.style.transform = `translateX(-${i * 100}%)`;
+    updateDots();
+  }
+
+  function next(){
+    goTo(i + 1, true);
+  }
+  function prev(){
+    goTo(i - 1, true);
+  }
+
+  // --- Po animaci zkontroluj klony ---
+  track.addEventListener('transitionend', ()=>{
+    const current = slidesAll[i];
+    if(!current) return;
+
+    if(current === firstClone){
+      // pokud jsme dojeli na klon první – skočíme zpět
       goTo(1, false);
-      play();
-    
-      // Ovládání
-      btnNext?.addEventListener('click', ()=>{ next(); if(playing) play(); });
-      btnPrev?.addEventListener('click', ()=>{ prev(); if(playing) play(); });
-    
-      dots.forEach((d, idx)=> d.addEventListener('click', ()=>{
-        // idx je reálný index [0..len-1], my potřebujeme posunout na [1..len]
-        goTo(idx + 1, true);
-        if(playing) play();
-      }));
-    
-      // Hover/focus -> pauza
-      root.addEventListener('mouseenter', pause);
-      root.addEventListener('mouseleave', play);
-      root.addEventListener('focusin', pause);
-      root.addEventListener('focusout', play);
-    
-      // Klávesnice
-      root.addEventListener('keydown', (e)=>{
-        if(e.key === 'ArrowRight'){ e.preventDefault(); next(); }
-        if(e.key === 'ArrowLeft'){  e.preventDefault(); prev(); }
-      });
-      root.tabIndex = 0;
-    
-      // Swipe
-      let sx = 0, dx = 0;
-      const onStart = e => { sx = (e.touches ? e.touches[0].clientX : e.clientX); dx = 0; pause(); };
-      const onMove  = e => { const x = (e.touches ? e.touches[0].clientX : e.clientX); dx = x - sx; };
-      const onEnd   = () => { if(Math.abs(dx) > 40){ dx < 0 ? next() : prev(); } play(); };
-    
-      track.addEventListener('touchstart', onStart, {passive:true});
-      track.addEventListener('touchmove',  onMove,  {passive:true});
-      track.addEventListener('touchend',   onEnd,   {passive:true});
-    
-      // Reduced motion
-      const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-      if(mq.matches){ pause(); }
-      mq.addEventListener?.('change', e => e.matches ? pause() : play());
-    })();
-    </script>
-    
+    }
+    if(current === lastClone){
+      // pokud jsme dojeli dozadu na klon poslední – skočíme dopředu
+      goTo(len, false);
+    }
+  });
+
+  function play(){
+    if(timer) clearInterval(timer);
+    timer = setInterval(next, DURATION);
+    playing = true;
+  }
+
+  function pause(){
+    if(timer) clearInterval(timer);
+    timer = null;
+    playing = false;
+  }
+
+  // --- Inicializace ---
+  goTo(1, false);
+  play();
+
+  // --- Ovládání ---
+  btnNext?.addEventListener('click', ()=>{ next(); if(playing) play(); });
+  btnPrev?.addEventListener('click', ()=>{ prev(); if(playing) play(); });
+
+  dots.forEach((d, idx)=> d.addEventListener('click', ()=>{
+    goTo(idx + 1, true);
+    if(playing) play();
+  }));
+
+  // Hover & focus pause
+  root.addEventListener('mouseenter', pause);
+  root.addEventListener('mouseleave', play);
+  root.addEventListener('focusin', pause);
+  root.addEventListener('focusout', play);
+
+  // Klávesnice
+  root.addEventListener('keydown', (e)=>{
+    if(e.key === 'ArrowRight'){ e.preventDefault(); next(); }
+    if(e.key === 'ArrowLeft'){  e.preventDefault(); prev(); }
+  });
+  root.tabIndex = 0;
+
+  // Swipe
+  let sx = 0, dx = 0;
+  const onStart = e => { sx = (e.touches ? e.touches[0].clientX : e.clientX); dx = 0; pause(); };
+  const onMove  = e => { const x = (e.touches ? e.touches[0].clientX : e.clientX); dx = x - sx; };
+  const onEnd   = () => { if(Math.abs(dx) > 40){ dx < 0 ? next() : prev(); } play(); };
+
+  track.addEventListener('touchstart', onStart, {passive:true});
+  track.addEventListener('touchmove',  onMove,  {passive:true});
+  track.addEventListener('touchend',   onEnd,   {passive:true});
+
+  // Reduced motion (OS nastavení)
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if(mq.matches){ pause(); }
+  mq.addEventListener?.('change', e => e.matches ? pause() : play());
+})();
+</script>
+
 
   <!-- Mobile nav JS -->
   <script>
